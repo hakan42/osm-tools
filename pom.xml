@@ -13,6 +13,8 @@
     <description></description>
 
     <modules>
+        <module>osm-parser</module>
+        <module>osm-persistence</module>
     </modules>
 
     <properties>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+
+	<!-- ============================================= -->
+	<!-- activating JPA wiring and annotations -->
+	<!-- ============================================= -->
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.gurkensalat.osm" />
+
+	<tx:annotation-driven transaction-manager="osm-place-connectivity-transaction-manager" />
+
+	<!-- Configure to make Spring perform persistence injection using @PersistenceContext/@PersitenceUnit annotations -->
+	<bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor" />
+	<bean class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
+
+	<!-- ============================================= -->
+	<!-- component scoped set of all JPA related beans -->
+	<!-- ============================================= -->
+
+	<!-- data source -->
+	<bean id="osm-place-connectivity-data-source" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="$osm-place-connectivity{osm-place-connectivity.database.driver}" />
+		<property name="url" value="$osm-place-connectivity{osm-place-connectivity.database.url}" />
+		<property name="username" value="$osm-place-connectivity{osm-place-connectivity.database.user}" />
+		<property name="password" value="$osm-place-connectivity{osm-place-connectivity.database.password}" />
+		<property name="initialSize" value="$osm-place-connectivity{osm-place-connectivity.database.initial-size}" />
+		<property name="maxActive" value="$osm-place-connectivity{osm-place-connectivity.database.max-active}" />
+		<property name="maxIdle" value="$osm-place-connectivity{osm-place-connectivity.database.max-idle}" />
+		<property name="minIdle" value="$osm-place-connectivity{osm-place-connectivity.database.min-idle}" />
+	</bean>
+
+	<!-- JPA adapter -->
+	<bean id="osm-place-connectivity-unit-jpa-adapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">
+		<property name="showSql" value="false" />
+		<!-- <property name="generateDdl" value="false" /> -->
+		<property name="databasePlatform" value="$osm-place-connectivity{osm-place-connectivity.database.dialect}" />
+	</bean>
+
+	<!-- JPA entity manager factory -->
+	<bean id="osm-place-connectivity-entity-manager-factory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="osm-place-connectivity-data-source" />
+		<property name="jpaVendorAdapter" ref="osm-place-connectivity-unit-jpa-adapter" />
+		<property name="persistenceXmlLocation" value="classpath:/META-INF/jpa/osm-place-connectivity-persistence-unit.xml" />
+		<property name="jpaProperties">
+			<props>
+				<prop key="hibernate.hbm2ddl.auto">$osm-place-connectivity{osm-place-connectivity.database.init-mode}</prop>
+				<prop key="hibernate.autocommit">false</prop>
+				<prop key="hibernate.connection.autocommit">false</prop>
+				<prop key="hibernate.jdbc.batch_size">50</prop>
+
+				<prop key="jadira.usertype.autoRegisterUserTypes">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- JPA transaction manager -->
+	<bean id="osm-place-connectivity-transaction-manager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="osm-place-connectivity-entity-manager-factory" />
+	</bean>
+
+</beans>
