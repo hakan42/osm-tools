@@ -2,15 +2,10 @@ package com.gurkensalat.osm.entity;
 
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Version;
 
@@ -28,7 +23,7 @@ public class Place extends AbstractPersistable<Long>
     @Column(name = "LON")
     private double lon;
 
-    @Column(name = "NAME", length = 40)
+    @Column(name = "NAME", length = 80)
     private String name;
 
     @Column(name = "TYPE", length = 20)
