@@ -10,7 +10,7 @@ import javax.persistence.Table;
 import javax.persistence.Version;
 
 @Entity
-@Table(name = "PLACES")
+@Table(name = "OSM_PLACES")
 public class Place extends AbstractPersistable<Long>
 {
     @Version
