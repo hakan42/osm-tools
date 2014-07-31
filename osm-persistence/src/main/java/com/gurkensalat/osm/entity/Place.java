@@ -17,6 +17,10 @@ public class Place extends AbstractPersistable<Long>
     @Column(name = "VERSION")
     private Integer version;
 
+    @Column(name = "TYPE", length = 20)
+    @Enumerated(EnumType.STRING)
+    private PlaceType type;
+
     @Column(name = "LAT")
     private double lat;
 
@@ -26,9 +30,20 @@ public class Place extends AbstractPersistable<Long>
     @Column(name = "NAME", length = 80)
     private String name;
 
-    @Column(name = "TYPE", length = 20)
-    @Enumerated(EnumType.STRING)
-    private PlaceType type;
+    @Column(name = "ADDR_STREET", length = 80)
+    private String addrStreet;
+
+    @Column(name = "ADDR_NUMBER", length = 10)
+    private String addrHouseNumber;
+
+    @Column(name = "ADDR_POSTCODE", length = 10)
+    private String addrPostcode;
+
+    @Column(name = "ADDR_STATE", length = 80)
+    private String addrState;
+
+    @Column(name = "ADDR_COUNTRY", length = 80)
+    private String addrCountry;
 
     protected Place()
     {
@@ -40,29 +55,59 @@ public class Place extends AbstractPersistable<Long>
         this.type = type;
     }
 
+    public String getAddrStreet()
+    {
+        return addrStreet;
+    }
+
+    public void setAddrStreet(String addrStreet)
+    {
+        this.addrStreet = addrStreet;
+    }
+
+    public String getAddrHouseNumber()
+    {
+        return addrHouseNumber;
+    }
+
+    public void setAddrHouseNumber(String addrHouseNumber)
+    {
+        this.addrHouseNumber = addrHouseNumber;
+    }
+
+    public String getAddrPostcode()
+    {
+        return addrPostcode;
+    }
+
+    public void setAddrPostcode(String addrPostcode)
+    {
+        this.addrPostcode = addrPostcode;
+    }
+
+    public String getAddrState()
+    {
+        return addrState;
+    }
+
+    public void setAddrState(String addrState)
+    {
+        this.addrState = addrState;
+    }
+
+    public String getAddrCountry()
+    {
+        return addrCountry;
+    }
+
+    public void setAddrCountry(String addrCountry)
+    {
+        this.addrCountry = addrCountry;
+    }
+
     public double getLat()
     {
         return lat;
-    }
-
-    public double getLon()
-    {
-        return lon;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public PlaceType getType()
-    {
-        return type;
-    }
-
-    public Integer getVersion()
-    {
-        return version;
     }
 
     public void setLat(double lat)
@@ -70,9 +115,19 @@ public class Place extends AbstractPersistable<Long>
         this.lat = lat;
     }
 
+    public double getLon()
+    {
+        return lon;
+    }
+
     public void setLon(double lon)
     {
         this.lon = lon;
+    }
+
+    public String getName()
+    {
+        return name;
     }
 
     public void setName(String name)
@@ -80,9 +135,19 @@ public class Place extends AbstractPersistable<Long>
         this.name = name;
     }
 
+    public PlaceType getType()
+    {
+        return type;
+    }
+
     public void setType(PlaceType type)
     {
         this.type = type;
+    }
+
+    public Integer getVersion()
+    {
+        return version;
     }
 
     public void setVersion(Integer version)
