@@ -18,7 +18,7 @@ public class Address
     @Column(name = "ADDR_POSTCODE", length = 10)
     private String postcode;
 
-    @Column(name = "ADDR_CIY", length = 80)
+    @Column(name = "ADDR_CITY", length = 80)
     private String city;
 
     @Column(name = "ADDR_STATE", length = 80)
