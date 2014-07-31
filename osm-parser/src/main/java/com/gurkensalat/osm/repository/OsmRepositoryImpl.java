@@ -13,6 +13,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import static org.apache.commons.io.IOUtils.closeQuietly;
+
 @Component
 public class OsmRepositoryImpl implements OsmRepository
 {
@@ -28,10 +30,15 @@ public class OsmRepositoryImpl implements OsmRepository
             Digester digester = createOsmPlanetDigester();
             LOGGER.info("Digester is: {}", digester);
 
-            // TODO use Apache IOutils here
             FileInputStream fis = new FileInputStream(resourceFile);
-            root = digester.parse(fis);
-            fis.close();
+            try
+            {
+                root = digester.parse(fis);
+            }
+            finally
+            {
+                closeQuietly(fis);
+            }
 
             LOGGER.info("Parsed Root: {}", root);
         }
