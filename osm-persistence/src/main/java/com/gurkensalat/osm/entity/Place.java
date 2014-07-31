@@ -30,79 +30,26 @@ public class Place extends AbstractPersistable<Long>
     @Column(name = "NAME", length = 80)
     private String name;
 
-    @Column(name = "ADDR_STREET", length = 80)
-    private String addrStreet;
-
-    @Column(name = "ADDR_NUMBER", length = 10)
-    private String addrHouseNumber;
-
-    @Column(name = "ADDR_POSTCODE", length = 10)
-    private String addrPostcode;
-
-    @Column(name = "ADDR_STATE", length = 80)
-    private String addrState;
-
-    @Column(name = "ADDR_COUNTRY", length = 80)
-    private String addrCountry;
+    private Address address;
 
     protected Place()
     {
     }
 
-    public  Place(String name, PlaceType type)
+    public Place(String name, PlaceType type)
     {
         this.name = name;
         this.type = type;
     }
 
-    public String getAddrStreet()
+    public Address getAddress()
     {
-        return addrStreet;
+        return address;
     }
 
-    public void setAddrStreet(String addrStreet)
+    public void setAddress(Address address)
     {
-        this.addrStreet = addrStreet;
-    }
-
-    public String getAddrHouseNumber()
-    {
-        return addrHouseNumber;
-    }
-
-    public void setAddrHouseNumber(String addrHouseNumber)
-    {
-        this.addrHouseNumber = addrHouseNumber;
-    }
-
-    public String getAddrPostcode()
-    {
-        return addrPostcode;
-    }
-
-    public void setAddrPostcode(String addrPostcode)
-    {
-        this.addrPostcode = addrPostcode;
-    }
-
-    public String getAddrState()
-    {
-        return addrState;
-    }
-
-    public void setAddrState(String addrState)
-    {
-        this.addrState = addrState;
-    }
-
-    public String getAddrCountry()
-    {
-        return addrCountry;
-    }
-
-    public void setAddrCountry(String addrCountry)
-    {
-        this.addrCountry = addrCountry;
+        this.address = address;
     }
 
     public double getLat()
