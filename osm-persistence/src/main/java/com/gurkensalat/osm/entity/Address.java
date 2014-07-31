@@ -18,6 +18,9 @@ public class Address
     @Column(name = "ADDR_POSTCODE", length = 10)
     private String postcode;
 
+    @Column(name = "ADDR_CIY", length = 80)
+    private String city;
+
     @Column(name = "ADDR_STATE", length = 80)
     private String state;
 
@@ -26,6 +29,16 @@ public class Address
 
     public Address()
     {
+    }
+
+    public String getCity()
+    {
+        return city;
+    }
+
+    public void setCity(String city)
+    {
+        this.city = city;
     }
 
     public String getStreet()
@@ -84,6 +97,7 @@ public class Address
                 .append("street", street)
                 .append("housenumber", housenumber)
                 .append("postcode", postcode)
+                .append("city", city)
                 .append("state", state)
                 .append("country", country)
                 .toString();
