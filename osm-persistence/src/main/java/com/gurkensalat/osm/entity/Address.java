@@ -12,7 +12,7 @@ public class Address
     @Column(name = "ADDR_STREET", length = 80)
     private String street;
 
-    @Column(name = "ADDR_NUMBER", length = 10)
+    @Column(name = "ADDR_HOUSENUMBER", length = 10)
     private String housenumber;
 
     @Column(name = "ADDR_POSTCODE", length = 10)
