@@ -17,6 +17,9 @@ public class Place extends AbstractPersistable<Long>
     @Column(name = "VERSION")
     private Integer version;
 
+    @Column(name = "VALID")
+    private boolean valid;
+
     @Column(name = "TYPE", length = 20)
     @Enumerated(EnumType.STRING)
     private PlaceType type;
@@ -40,6 +43,16 @@ public class Place extends AbstractPersistable<Long>
     {
         this.name = name;
         this.type = type;
+    }
+
+    public boolean isValid()
+    {
+        return valid;
+    }
+
+    public void setValid(boolean valid)
+    {
+        this.valid = valid;
     }
 
     public Address getAddress()
