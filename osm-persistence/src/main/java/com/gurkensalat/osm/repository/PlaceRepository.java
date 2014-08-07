@@ -11,6 +11,8 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "place", path = "place")
 public interface PlaceRepository extends PagingAndSortingRepository<Place, Long>
 {
+    List<Place> findByKey(@Param("key") String key);
+
     List<Place> findByName(@Param("name") String name);
 
     List<Place> findByNameAndType(@Param("name") String name, @Param("type") PlaceType type);

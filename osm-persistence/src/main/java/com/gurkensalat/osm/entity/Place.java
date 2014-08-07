@@ -24,6 +24,9 @@ public class Place extends AbstractPersistable<Long>
     @Enumerated(EnumType.STRING)
     private PlaceType type;
 
+    @Column(name = "D_KEY", length = 80)
+    private String key;
+
     @Column(name = "LAT")
     private double lat;
 
@@ -83,6 +86,16 @@ public class Place extends AbstractPersistable<Long>
     public void setLon(double lon)
     {
         this.lon = lon;
+    }
+
+    public String getKey()
+    {
+        return key;
+    }
+
+    public void setKey(String key)
+    {
+        this.key = key;
     }
 
     public String getName()
