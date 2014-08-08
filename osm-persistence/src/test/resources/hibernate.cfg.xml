@@ -23,7 +23,7 @@
 		<property name="hbm2ddl.auto">true</property>
 
 		<!-- Mapping -->
-		<mapping class="com.gurkensalat.osm.entity.Place"/>
+		<mapping class="com.gurkensalat.osm.entity.OsmPlace"/>
 		<mapping class="com.gurkensalat.osm.entity.Distance"/>
 	</session-factory>
 </hibernate-configuration>
