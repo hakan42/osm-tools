@@ -38,6 +38,19 @@ public class OsmRepositoryImplTest
     }
 
     @Test
+    public void parseMosqueGermeringDataFromAPI() throws IOException
+    {
+        InputStream is = getClass().getClassLoader().getResourceAsStream("904317998.osm");
+        assertNotNull(is);
+
+        OsmRoot root = testable.parse(is);
+        closeQuietly(is);
+
+        assertNotNull(root);
+        assertEquals(1, root.getNodes().size());
+    }
+
+    @Test
     public void parsePlaceAnkaraData() throws IOException
     {
         InputStream is = getClass().getClassLoader().getResourceAsStream("turkey-places-city-ankara.osm");
