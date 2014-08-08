@@ -1,7 +1,7 @@
 package com.gurkensalat.osm.repository;
 
 import com.gurkensalat.osm.SimpleConfiguration;
-import com.gurkensalat.osm.entity.Place;
+import com.gurkensalat.osm.entity.OsmPlace;
 import com.gurkensalat.osm.entity.PlaceType;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,12 +20,12 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(classes = SimpleConfiguration.class)
-public class PlaceRepositoryTest
+public class OsmPlaceRepositoryTest
 {
     @Autowired
-    PlaceRepository placeRepository;
+    OsmPlaceRepository placeRepository;
 
-    private Place place;
+    private OsmPlace place;
 
     @Before
     public void setUp()
@@ -36,11 +36,11 @@ public class PlaceRepositoryTest
     @Test
     public void savePlace()
     {
-        Place place = new Place("test", PlaceType.OSM_CITY);
+        OsmPlace place = new OsmPlace("test", PlaceType.OSM_CITY);
 
         assertTrue(place.isNew());
 
-        Place savedPlace = placeRepository.save(place);
+        OsmPlace savedPlace = placeRepository.save(place);
         assertNotNull(savedPlace);
         assertFalse(place.isNew());
         assertEquals(savedPlace.getId(), new Long(1));

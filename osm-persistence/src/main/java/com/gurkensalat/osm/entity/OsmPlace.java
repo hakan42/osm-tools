@@ -11,7 +11,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "OSM_PLACES")
-public class Place extends AbstractPersistable<Long>
+public class OsmPlace extends AbstractPersistable<Long>
 {
     @Version
     @Column(name = "VERSION")
@@ -38,11 +38,11 @@ public class Place extends AbstractPersistable<Long>
 
     private Address address;
 
-    protected Place()
+    protected OsmPlace()
     {
     }
 
-    public Place(String name, PlaceType type)
+    public OsmPlace(String name, PlaceType type)
     {
         this.name = name;
         this.type = type;
