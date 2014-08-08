@@ -12,6 +12,7 @@ import org.xml.sax.SAXException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
@@ -22,18 +23,14 @@ public class OsmRepositoryImpl implements OsmRepository
 
     public OsmRoot parse(File resourceFile)
     {
-        // Just to be NPE-safe
         OsmRoot root = new OsmRoot();
 
         try
         {
-            Digester digester = createOsmPlanetDigester();
-            LOGGER.info("Digester is: {}", digester);
-
             FileInputStream fis = new FileInputStream(resourceFile);
             try
             {
-                root = digester.parse(fis);
+                root = parse(fis);
             }
             finally
             {
@@ -46,6 +43,23 @@ public class OsmRepositoryImpl implements OsmRepository
         {
             LOGGER.error("While parsing OSM XML", e);
             LOGGER.info("  were trying to read {}", resourceFile);
+        }
+
+        return root;
+    }
+
+    public OsmRoot parse(InputStream inputStream)
+    {
+        OsmRoot root = new OsmRoot();
+        try
+        {
+            Digester digester = createOsmPlanetDigester();
+
+            root = digester.parse(inputStream);
+        }
+        catch (IOException e)
+        {
+            LOGGER.error("While parsing OSM XML", e);
         }
         catch (SAXException e)
         {
