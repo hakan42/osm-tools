@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -23,7 +24,7 @@ import static org.junit.Assert.assertTrue;
 public class OsmPlaceRepositoryTest
 {
     @Autowired
-    OsmPlaceRepository placeRepository;
+    OsmPlaceRepository osmPlaceRepository;
 
     private OsmPlace place;
 
@@ -40,9 +41,17 @@ public class OsmPlaceRepositoryTest
 
         assertTrue(place.isNew());
 
-        OsmPlace savedPlace = placeRepository.save(place);
+        OsmPlace savedPlace = osmPlaceRepository.save(place);
         assertNotNull(savedPlace);
         assertFalse(place.isNew());
         assertEquals(savedPlace.getId(), new Long(1));
+    }
+
+    @Test
+    public void testQueryByBbox()
+    {
+        List<OsmPlace> result = osmPlaceRepository.findByBbox(1, 2, 3, 4);
+
+        assertNotNull(result);
     }
 }
