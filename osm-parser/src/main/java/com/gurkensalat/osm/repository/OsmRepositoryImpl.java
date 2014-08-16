@@ -19,7 +19,7 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 @Component
 public class OsmRepositoryImpl implements OsmRepository
 {
-    private final static Logger LOGGER = LoggerFactory.getLogger(OsmRepositoryImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OsmRepositoryImpl.class);
 
     public OsmRoot parse(File resourceFile)
     {
