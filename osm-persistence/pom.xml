@@ -96,6 +96,12 @@
 
     <dependencies>
 
+        <!-- Our own parser -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>osm-parser</artifactId>
+        </dependency>
+
         <!-- DI, ORM -->
         <dependency>
             <groupId>org.springframework</groupId>

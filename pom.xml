@@ -121,6 +121,12 @@
     <dependencyManagement>
         <dependencies>
 
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>osm-parser</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <!-- DI, ORM -->
             <dependency>
                 <groupId>org.springframework</groupId>

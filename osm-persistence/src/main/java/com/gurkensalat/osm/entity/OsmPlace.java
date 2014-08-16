@@ -48,6 +48,40 @@ public class OsmPlace extends AbstractPersistable<Long>
         this.type = type;
     }
 
+    public OsmPlace(OsmNode node)
+    {
+        this.setLat(node.getLat());
+        this.setLon(node.getLon());
+        this.setAddress(new Address());
+
+        for (OsmTag tag : node.getTags())
+        {
+            String key = tag.getKey().toLowerCase();
+            String val = tag.getValue();
+
+            if ("name".equals(key))
+            {
+                this.setName(val);
+            }
+            else if ("addr:street".equals(key))
+            {
+                this.getAddress().setStreet(val);
+            }
+            else if ("addr:housenumber".equals(key))
+            {
+                this.getAddress().setHousenumber(val);
+            }
+            else if ("addr:postcode".equals(key))
+            {
+                this.getAddress().setPostcode(val);
+            }
+            else if ("addr:city".equals(key))
+            {
+                this.getAddress().setCity(val);
+            }
+        }
+    }
+
     public boolean isValid()
     {
         return valid;
