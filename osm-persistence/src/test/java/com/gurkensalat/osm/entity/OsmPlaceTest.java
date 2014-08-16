@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 public class OsmPlaceTest
@@ -24,6 +25,24 @@ public class OsmPlaceTest
         node = createGermeringMosque();
         testable = new OsmPlace(node);
         assertNotNull(testable);
+        assertNotNull(testable.getAddress());
+        assertEquals("Germering", testable.getAddress().getCity());
+    }
+
+    @Test
+    public void testCopyToFromNodeGermeringMosque()
+    {
+        node = createGermeringMosque();
+
+        OsmPlace source = new OsmPlace(node);
+        OsmPlace testable = new OsmPlace();
+        assertNotNull(source);
+
+        source.copyTo(testable);
+
+        assertNotNull(testable);
+        assertNotNull(testable.getAddress());
+        assertEquals("Germering", testable.getAddress().getCity());
     }
 
     @Test
@@ -32,6 +51,23 @@ public class OsmPlaceTest
         node = createAnkaraCity();
         testable = new OsmPlace(node);
         assertNotNull(testable);
+        assertNotNull(testable.getAddress());
+        assertEquals("Ankara", testable.getName());
+    }
+
+    @Test
+    public void testCopyToFromNodeAnkaraCity()
+    {
+        node = createAnkaraCity();
+
+        OsmPlace source = new OsmPlace(node);
+        OsmPlace testable = new OsmPlace();
+        assertNotNull(source);
+
+        source.copyTo(testable);
+
+        assertNotNull(testable);
+        assertEquals("Ankara", testable.getName());
     }
 
     private OsmNode createGermeringMosque()

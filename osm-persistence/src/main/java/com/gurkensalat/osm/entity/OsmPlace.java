@@ -82,6 +82,28 @@ public class OsmPlace extends AbstractPersistable<Long>
         }
     }
 
+    public void copyTo(OsmPlace other)
+    {
+        other.setLon(getLon());
+        other.setLat(getLat());
+        other.setName(getName());
+        other.setType(getType());
+        other.setKey(getKey());
+        other.setValid(isValid());
+
+        if (getAddress() == null)
+        {
+            setAddress(new Address());
+        }
+
+        if (other.getAddress() == null)
+        {
+            other.setAddress(new Address());
+        }
+
+        getAddress().copyTo(other.getAddress());
+    }
+
     public boolean isValid()
     {
         return valid;

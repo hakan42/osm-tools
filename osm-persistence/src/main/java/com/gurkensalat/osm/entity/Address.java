@@ -31,6 +31,16 @@ public class Address
     {
     }
 
+    public void copyTo(Address other)
+    {
+        other.setStreet(getStreet());
+        other.setHousenumber(getHousenumber());
+        other.setPostcode(getPostcode());
+        other.setCity(getCity());
+        other.setState(getState());
+        other.setCountry(getCountry());
+    }
+
     public String getCity()
     {
         return city;
