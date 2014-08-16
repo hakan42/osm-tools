@@ -77,12 +77,10 @@ public class OsmRepositoryImpl implements OsmRepository
 
         digester.addObjectCreate("osm/node", OsmNode.class);
         digester.addSetProperties("osm/node");
-        // digester.addSetNext("osm/node", "addNode", OsmRoot.class.getCanonicalName());
         digester.addSetNext("osm/node", "addNode");
 
         digester.addObjectCreate("osm/node/tag", OsmTag.class);
         digester.addSetProperties("osm/node/tag");
-        // digester.addSetNext("osm/node/tag", "addTag", OsmTag.class.getCanonicalName());
         digester.addSetNext("osm/node/tag", "addTag");
 
         return digester;
