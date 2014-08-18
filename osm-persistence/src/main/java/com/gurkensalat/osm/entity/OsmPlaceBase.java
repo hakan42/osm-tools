@@ -1,5 +1,6 @@
 package com.gurkensalat.osm.entity;
 
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
@@ -36,6 +37,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
 
     private Address address;
 
+    private Contact contact;
 
     protected OsmPlaceBase()
     {
@@ -52,6 +54,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         this.setLat(node.getLat());
         this.setLon(node.getLon());
         this.setAddress(new Address());
+        this.setContact(new Contact());
 
         for (OsmTag tag : node.getTags())
         {
@@ -78,6 +81,22 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
             {
                 this.getAddress().setCity(val);
             }
+            else if ("contact:phone".equals(key) || "phone".equals(key))
+            {
+                this.getContact().setPhone(val);
+            }
+            else if ("contact:fax".equals(key) || "fax".equals(key))
+            {
+                this.getContact().setFax(val);
+            }
+            else if ("contact:website".equals(key) || "website".equals(key))
+            {
+                this.getContact().setWebsite(val);
+            }
+            else if ("contact:email".equals(key) || "email".equals(key))
+            {
+                this.getContact().setEmail(val);
+            }
         }
     }
 
@@ -102,6 +121,18 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         }
 
         getAddress().copyTo(other.getAddress());
+
+        if (getContact() == null)
+        {
+            setContact(new Contact());
+        }
+
+        if (other.getContact() == null)
+        {
+            other.setContact(new Contact());
+        }
+
+        getContact().copyTo(other.getContact());
     }
 
     public boolean isValid()
@@ -122,6 +153,16 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     public void setAddress(Address address)
     {
         this.address = address;
+    }
+
+    public Contact getContact()
+    {
+        return contact;
+    }
+
+    public void setContact(Contact contact)
+    {
+        this.contact = contact;
     }
 
     public double getLat()
@@ -182,5 +223,18 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     public void setVersion(Integer version)
     {
         this.version = version;
+    }
+
+
+    public String toString()
+    {
+        return (new ToStringBuilder(this))
+                .append("lat", lat)
+                .append("lon", lon)
+                .append("name", name)
+                .append("type", type)
+                .append("address", address)
+                .append("contact", contact)
+                .toString();
     }
 }
