@@ -30,12 +30,10 @@ public class OsmTag extends AbstractPersistable<Long>
 
     public OsmTag()
     {
-
     }
 
     public void copyTo(OsmTag other)
     {
-
     }
 
     public Integer getVersion()
