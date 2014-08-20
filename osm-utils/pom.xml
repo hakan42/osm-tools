@@ -25,6 +25,11 @@
 
     <dependencies>
 
+        <dependency>
+            <groupId>com.javadocmd</groupId>
+            <artifactId>simplelatlng</artifactId>
+        </dependency>
+
         <!-- Logging... -->
         <dependency>
             <groupId>org.slf4j</groupId>
