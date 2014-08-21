@@ -1,11 +1,14 @@
 package com.gurkensalat.osm.entity;
 
+import javax.xml.bind.annotation.XmlAttribute;
+
 public class OsmTag
 {
     private String key;
 
     private String value;
 
+    @XmlAttribute(name = "k")
     public String getKey()
     {
         return key;
@@ -21,6 +24,7 @@ public class OsmTag
         this.key = key;
     }
 
+    @XmlAttribute(name = "v")
     public String getValue()
     {
         return value;

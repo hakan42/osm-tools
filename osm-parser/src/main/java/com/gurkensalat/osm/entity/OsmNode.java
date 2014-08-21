@@ -1,5 +1,7 @@
 package com.gurkensalat.osm.entity;
 
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,21 +35,25 @@ public class OsmNode
         return id;
     }
 
+    @XmlElement(name = "tag")
     public List<OsmTag> getTags()
     {
         return tags;
     }
 
+    @XmlAttribute(name = "lat")
     public void setLat(double lat)
     {
         this.lat = lat;
     }
 
+    @XmlAttribute(name = "lon")
     public void setLon(double lon)
     {
         this.lon = lon;
     }
 
+    @XmlAttribute(name = "id")
     public void setId(long id)
     {
         this.id = id;

@@ -7,12 +7,15 @@ import org.apache.commons.digester3.Digester;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URI;
 
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
@@ -20,6 +23,10 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 public class OsmRepositoryImpl implements OsmRepository
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(OsmRepositoryImpl.class);
+
+    private final static String API_NODE_HOST = "api.openstreetmap.org";
+
+    private final static String API_NODE_PATH = "/api/0.6/node";
 
     public OsmRoot parse(File resourceFile)
     {
@@ -64,6 +71,28 @@ public class OsmRepositoryImpl implements OsmRepository
         catch (SAXException e)
         {
             LOGGER.error("While parsing OSM XML", e);
+        }
+
+        return root;
+    }
+
+    public OsmRoot load(int osmId)
+    {
+        OsmRoot root = new OsmRoot();
+        try
+        {
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_NODE_HOST + API_NODE_PATH + "/" + Integer.toString(osmId));
+
+            URI uri = builder.build().toUri();
+
+            LOGGER.debug("Loading from {}", uri.toString());
+
+            RestTemplate restTemplate = new RestTemplate();
+            root = restTemplate.getForObject(uri, OsmRoot.class);
+        }
+        catch (Exception e)
+        {
+            LOGGER.error("While fetching OSM node from API", e);
         }
 
         return root;
