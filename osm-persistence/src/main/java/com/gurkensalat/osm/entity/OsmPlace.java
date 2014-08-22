@@ -7,6 +7,8 @@ import javax.persistence.Table;
 @Table(name = "OSM_PLACES")
 public class OsmPlace extends OsmPlaceBase
 {
+    private transient String mapUrl;
+
     protected OsmPlace()
     {
     }
@@ -19,5 +21,15 @@ public class OsmPlace extends OsmPlaceBase
     public OsmPlace(OsmNode node)
     {
         super(node);
+    }
+
+    public String getMapUrl()
+    {
+        return mapUrl;
+    }
+
+    public void setMapUrl(String mapUrl)
+    {
+        this.mapUrl = mapUrl;
     }
 }
