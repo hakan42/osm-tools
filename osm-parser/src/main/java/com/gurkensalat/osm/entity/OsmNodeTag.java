@@ -2,7 +2,7 @@ package com.gurkensalat.osm.entity;
 
 import javax.xml.bind.annotation.XmlAttribute;
 
-public class OsmTag
+public class OsmNodeTag
 {
     private String key;
 

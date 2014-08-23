@@ -60,7 +60,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         this.setAddress(new Address());
         this.setContact(new Contact());
 
-        for (OsmTag tag : node.getTags())
+        for (OsmNodeTag tag : node.getTags())
         {
             String key = tag.getKey().toLowerCase();
             String val = tag.getValue();

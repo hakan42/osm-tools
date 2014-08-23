@@ -110,7 +110,7 @@ public class OsmPlaceTest
         OsmNode node = new OsmNode();
         node.setLat(48.1364000);
         node.setLon(11.3872928);
-        node.setTags(new ArrayList<OsmTag>());
+        node.setTags(new ArrayList<OsmNodeTag>());
         node.getTags().add(createTag("addr:city", "Germering"));
         node.getTags().add(createTag("addr:housenumber", "13a"));
         node.getTags().add(createTag("addr:postcode", "82110"));
@@ -124,7 +124,7 @@ public class OsmPlaceTest
         OsmNode node = new OsmNode();
         node.setLat(-42);
         node.setLon(-42);
-        node.setTags(new ArrayList<OsmTag>());
+        node.setTags(new ArrayList<OsmNodeTag>());
         node.getTags().add(createTag("contact:phone", "4711"));
         node.getTags().add(createTag("contact:fax", "7777"));
         node.getTags().add(createTag("contact:website", "http://far-far.away/"));
@@ -138,7 +138,7 @@ public class OsmPlaceTest
         OsmNode node = new OsmNode();
         node.setLat(39.9272322);
         node.setLon(32.8519769);
-        node.setTags(new ArrayList<OsmTag>());
+        node.setTags(new ArrayList<OsmNodeTag>());
         node.getTags().add(createTag("capital", "yes"));
         node.getTags().add(createTag("is_in", "Turkey"));
         node.getTags().add(createTag("name", "Ankara"));
@@ -147,9 +147,9 @@ public class OsmPlaceTest
         return node;
     }
 
-    private OsmTag createTag(String key, String value)
+    private OsmNodeTag createTag(String key, String value)
     {
-        OsmTag tag = new OsmTag();
+        OsmNodeTag tag = new OsmNodeTag();
 
         tag.setKey(key);
         tag.setValue(value);

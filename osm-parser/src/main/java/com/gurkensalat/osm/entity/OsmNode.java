@@ -13,9 +13,9 @@ public class OsmNode
 
     private double lon;
 
-    private List<OsmTag> tags = new ArrayList<OsmTag>();
+    private List<OsmNodeTag> tags = new ArrayList<OsmNodeTag>();
 
-    public void addTag(OsmTag tag)
+    public void addTag(OsmNodeTag tag)
     {
         this.tags.add(tag);
     }
@@ -36,7 +36,7 @@ public class OsmNode
     }
 
     @XmlElement(name = "tag")
-    public List<OsmTag> getTags()
+    public List<OsmNodeTag> getTags()
     {
         return tags;
     }
@@ -59,7 +59,7 @@ public class OsmNode
         this.id = id;
     }
 
-    public void setTags(List<OsmTag> tags)
+    public void setTags(List<OsmNodeTag> tags)
     {
         this.tags = tags;
     }

@@ -1,8 +1,8 @@
 package com.gurkensalat.osm.repository;
 
 import com.gurkensalat.osm.entity.OsmNode;
+import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
-import com.gurkensalat.osm.entity.OsmTag;
 import org.apache.commons.digester3.Digester;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -110,7 +110,7 @@ public class OsmRepositoryImpl implements OsmRepository
         digester.addSetNext(path_osm_node, "addNode");
 
         String path_osm_node_tag = "osm/node/tag";
-        digester.addObjectCreate(path_osm_node_tag, OsmTag.class);
+        digester.addObjectCreate(path_osm_node_tag, OsmNodeTag.class);
         digester.addSetProperties(path_osm_node_tag);
         digester.addSetNext(path_osm_node_tag, "addTag");
 

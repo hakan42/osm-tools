@@ -1,8 +1,8 @@
 package com.gurkensalat.osm.repository;
 
 import com.gurkensalat.osm.entity.OsmNode;
+import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
-import com.gurkensalat.osm.entity.OsmTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
@@ -80,11 +80,11 @@ public class OsmRepositoryImplTest
         assertNotEquals(0, node.getLat());
         assertNotEquals(0, node.getLon());
 
-        List<OsmTag> tags = node.getTags();
+        List<OsmNodeTag> tags = node.getTags();
         assertNotNull(tags);
 
         assertNotEquals(0, tags.size());
-        for (OsmTag tag : tags)
+        for (OsmNodeTag tag : tags)
         {
             assertNotNull(tag.getKey());
             assertNotNull(tag.getValue());
