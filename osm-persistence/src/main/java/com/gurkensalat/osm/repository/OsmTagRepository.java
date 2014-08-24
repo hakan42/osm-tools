@@ -16,6 +16,11 @@ public interface OsmTagRepository extends PagingAndSortingRepository<OsmTag, Lon
 
     @Modifying
     @Transactional
+    @Query("delete from OsmTag where :parentTable = parentTable and :parentId = parentId")
+    void deleteByParentTableAndParentId(@Param("parentTable") String parentTable, @Param("parentId") Long parentId);
+
+    @Modifying
+    @Transactional
     @Query("update OsmTag set valid = false")
     void invalidateAll();
 

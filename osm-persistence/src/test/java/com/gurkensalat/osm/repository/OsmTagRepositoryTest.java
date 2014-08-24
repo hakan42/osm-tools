@@ -52,4 +52,10 @@ public class OsmTagRepositoryTest
 
         assertNotNull(tags);
     }
+
+    @Test
+    public void testDeleteByParentTableAndParentId()
+    {
+        osmTagRepository.deleteByParentTableAndParentId("OSM_PLACES", Long.valueOf(42));
+    }
 }
