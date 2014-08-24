@@ -13,11 +13,11 @@ public interface OsmTagRepository extends PagingAndSortingRepository<OsmTag, Lon
 {
     @Modifying
     @Transactional
-    @Query("update OsmTag set valid = 'f'")
+    @Query("update OsmTag set valid = false")
     void invalidateAll();
 
     @Modifying
     @Transactional
-    @Query("delete from OsmTag where valid = 'f'")
+    @Query("delete from OsmTag where valid = false")
     void deleteAllInvalid();
 }

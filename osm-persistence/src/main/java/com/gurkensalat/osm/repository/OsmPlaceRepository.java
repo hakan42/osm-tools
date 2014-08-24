@@ -28,11 +28,11 @@ public interface OsmPlaceRepository extends PagingAndSortingRepository<OsmPlace,
 
     @Modifying
     @Transactional
-    @Query("update OsmPlace set valid = 'f'")
+    @Query("update OsmPlace set valid = false")
     void invalidateAll();
 
     @Modifying
     @Transactional
-    @Query("delete from OsmPlace where valid = 'f'")
+    @Query("delete from OsmPlace where valid = false")
     void deleteAllInvalid();
 }
