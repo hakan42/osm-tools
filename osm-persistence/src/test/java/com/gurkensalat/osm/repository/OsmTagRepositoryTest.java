@@ -42,6 +42,14 @@ public class OsmTagRepositoryTest
         OsmTag savedTag = osmTagRepository.save(Tag);
         assertNotNull(savedTag);
         assertFalse(Tag.isNew());
-        assertEquals(savedTag.getId(), new Long(1));
+        assertEquals(savedTag.getId(), Long.valueOf(1));
+    }
+
+    @Test
+    public void testFindByParentTableAndParentId()
+    {
+        Iterable<OsmTag> tags = osmTagRepository.findByParentTableAndParentId("OSM_PLACES", Long.valueOf(42));
+
+        assertNotNull(tags);
     }
 }
