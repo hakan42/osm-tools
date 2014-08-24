@@ -16,6 +16,9 @@ public class OsmTag extends AbstractPersistable<Long>
     @Column(name = "VERSION")
     private Integer version;
 
+    @Column(name = "VALID")
+    private boolean valid;
+
     @Column(name = "P_TABLE", length = 80)
     private String parentTable;
 
@@ -44,6 +47,16 @@ public class OsmTag extends AbstractPersistable<Long>
     public void setVersion(Integer version)
     {
         this.version = version;
+    }
+
+    public boolean isValid()
+    {
+        return valid;
+    }
+
+    public void setValid(boolean valid)
+    {
+        this.valid = valid;
     }
 
     public String getParentTable()
@@ -89,12 +102,11 @@ public class OsmTag extends AbstractPersistable<Long>
     public String toString()
     {
         return (new ToStringBuilder(this))
+                .append("valid", valid)
                 .append("pTable", parentTable)
                 .append("pId", parentId)
                 .append("key", key)
                 .append("value", value)
                 .toString();
-
     }
-
 }

@@ -2,11 +2,13 @@ package com.gurkensalat.osm.repository;
 
 import com.gurkensalat.osm.entity.OsmPlace;
 import com.gurkensalat.osm.entity.PlaceType;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @RepositoryRestResource(collectionResourceRel = "place", path = "place")
@@ -23,4 +25,14 @@ public interface OsmPlaceRepository extends PagingAndSortingRepository<OsmPlace,
                               @Param("min_lat") double minLatitude,
                               @Param("max_lon") double maxLongitude,
                               @Param("max_lat") double maxLatitude);
+
+    @Modifying
+    @Transactional
+    @Query("update OsmPlace set valid = 'f'")
+    void invalidateAll();
+
+    @Modifying
+    @Transactional
+    @Query("delete from OsmPlace where valid = 'f'")
+    void deleteAllInvalid();
 }
