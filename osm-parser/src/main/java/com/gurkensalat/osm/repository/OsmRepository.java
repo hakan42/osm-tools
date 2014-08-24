@@ -10,4 +10,6 @@ public interface OsmRepository
     OsmRoot parse(File resourceFile);
 
     OsmRoot parse(InputStream inputStream);
+
+    OsmRoot loadFromServer(long osmId);
 }

@@ -76,12 +76,12 @@ public class OsmRepositoryImpl implements OsmRepository
         return root;
     }
 
-    public OsmRoot load(int osmId)
+    public OsmRoot loadFromServer(long osmId)
     {
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_NODE_HOST + API_NODE_PATH + "/" + Integer.toString(osmId));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_NODE_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
 
             URI uri = builder.build().toUri();
 

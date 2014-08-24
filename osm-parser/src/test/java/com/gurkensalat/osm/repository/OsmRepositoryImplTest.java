@@ -69,7 +69,7 @@ public class OsmRepositoryImplTest
     @Test
     public void loadMosqueGermanyDataFromServer()
     {
-        OsmRoot root = testable.load(904317998);
+        OsmRoot root = testable.loadFromServer(904317998);
 
         assertNotNull(root);
 
