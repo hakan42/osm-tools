@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/hakan42/osm-tools.png?label=ready&title=Ready)](https://waffle.io/hakan42/osm-tools)
 osm-tools
 =========
 
