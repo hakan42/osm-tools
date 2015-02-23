@@ -47,7 +47,7 @@
         <commons-lang.version>3.3.2</commons-lang.version>
         <joda-time.version>2.4</joda-time.version>
 
-        <hibernate.version>4.3.6.Final</hibernate.version>
+        <hibernate.version>4.3.8.Final</hibernate.version>
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
         <javassist.version>3.18.2-GA</javassist.version>
