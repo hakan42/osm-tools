@@ -47,6 +47,9 @@
         <commons-lang.version>3.3.2</commons-lang.version>
         <joda-time.version>2.4</joda-time.version>
 
+        <!-- spring-data-rest-core demands 2.4.5 -->
+        <jackson.version>2.4.5</jackson.version>
+
         <hibernate.version>4.3.8.Final</hibernate.version>
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
@@ -212,6 +215,18 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-rest</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-core</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-databind</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
             <!-- Logging -->
