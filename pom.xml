@@ -43,7 +43,7 @@
         <spring.version>4.1.6.RELEASE</spring.version>
         <spring-data.version>1.8.0.RELEASE</spring-data.version>
         <spring-data-rest.version>2.3.0.RELEASE</spring-data-rest.version>
-        <spring-boot.version>1.2.2.RELEASE</spring-boot.version>
+        <spring-boot.version>1.2.3.RELEASE</spring-boot.version>
 
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>3.3.2</commons-lang.version>
