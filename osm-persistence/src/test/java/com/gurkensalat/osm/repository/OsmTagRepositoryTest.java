@@ -42,7 +42,7 @@ public class OsmTagRepositoryTest
         OsmTag savedTag = osmTagRepository.save(Tag);
         assertNotNull(savedTag);
         assertFalse(Tag.isNew());
-        assertEquals(savedTag.getId(), Long.valueOf(1));
+        assertEquals(Long.valueOf(2), savedTag.getId());
     }
 
     @Test
