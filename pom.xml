@@ -63,8 +63,6 @@
 
         <jadira-usertype.version>5.0.0.GA</jadira-usertype.version>
 
-        <scannotation.version>1.0.2</scannotation.version>
-
         <h2-database.version>1.4.191</h2-database.version>
         <mysqldb.version>5.1.32</mysqldb.version>
 
@@ -463,19 +461,6 @@
                             </fileset>
                         </filesets>
                     </configuration>
-                </plugin>
-
-                <!-- Actually, deprecated with Hibernate 4 -->
-                <plugin>
-                    <groupId>org.codehaus.mojo</groupId>
-                    <artifactId>hibernate3-maven-plugin</artifactId>
-                    <version>3.0</version>
-                </plugin>
-
-                <plugin>
-                    <groupId>org.codehaus.gmaven</groupId>
-                    <artifactId>gmaven-plugin</artifactId>
-                    <version>${plugin.gmaven-plugin.version}</version>
                 </plugin>
 
                 <plugin>
