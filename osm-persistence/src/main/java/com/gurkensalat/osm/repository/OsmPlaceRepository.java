@@ -33,6 +33,11 @@ public interface OsmPlaceRepository extends PagingAndSortingRepository<OsmPlace,
 
     @Modifying
     @Transactional
+    @Query("update OsmPlace set valid = false where ADDR_COUNTRY = :addr_country")
+    void invalidateByCountryCode(@Param("addr_country") String countryCode);
+
+    @Modifying
+    @Transactional
     @Query("delete from OsmPlace where valid = false")
     void deleteAllInvalid();
 }
