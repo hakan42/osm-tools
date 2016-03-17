@@ -20,9 +20,9 @@ import java.net.URI;
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
 @Component
-public class OsmRepositoryImpl implements OsmRepository
+public class OsmParserRepositoryImpl implements OsmParserRepository
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(OsmRepositoryImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OsmParserRepositoryImpl.class);
 
     private final static String API_NODE_HOST = "api.openstreetmap.org";
 

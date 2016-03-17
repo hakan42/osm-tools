@@ -16,15 +16,15 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class OsmRepositoryImplTest
+public class OsmParserRepositoryImplTest
 {
-    OsmRepositoryImpl testable;
+    OsmParserRepositoryImpl testable;
 
     @Before
     public void setUp()
     {
         MockitoAnnotations.initMocks(this);
-        testable = new OsmRepositoryImpl();
+        testable = new OsmParserRepositoryImpl();
     }
 
     @Test

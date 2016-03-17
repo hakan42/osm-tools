@@ -5,7 +5,7 @@ import com.gurkensalat.osm.entity.OsmRoot;
 import java.io.File;
 import java.io.InputStream;
 
-public interface OsmRepository
+public interface OsmParserRepository
 {
     OsmRoot parse(File resourceFile);
 
