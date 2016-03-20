@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<osm version="0.6" generator="Osmosis 0.40.1">
-  <bound box="35.71373,25.59553,42.45132,44.83384" origin="0.40.1"/>
+<osm version="0.6" generator="Osmosis 0.43.1">
+  <bounds minlon="35.71373" minlat="25.59553" maxlon="42.45132" maxlat="44.83384" origin="0.43.1"/>
   <node id="25869410" version="19" timestamp="2012-03-27T11:46:29Z" uid="560896" user="Ghybu" changeset="11115589" lat="39.9272322" lon="32.8519769">
     <tag k="capital" v="yes"/>
     <tag k="is_in" v="Turkey"/>
