@@ -18,6 +18,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
+import static java.lang.Math.*;
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
 @Component
@@ -53,6 +54,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.info("  were trying to read {}", resourceFile);
         }
 
+        calculateBounds(root);
         return root;
     }
 
@@ -74,6 +76,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.error("While parsing OSM XML", e);
         }
 
+        calculateBounds(root);
         return root;
     }
 
@@ -96,7 +99,40 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.error("While fetching OSM node from API", e);
         }
 
+        calculateBounds(root);
         return root;
+    }
+
+    private void calculateBounds(OsmRoot root)
+    {
+        OsmBounds bounds = root.getBounds();
+        if (bounds == null)
+        {
+            bounds = new OsmBounds();
+            root.setBounds(bounds);
+        }
+
+        if (root.getNodes() != null)
+        {
+            if (root.getNodes().size() > 0)
+            {
+                bounds.setMinlat(1000);
+                bounds.setMaxlat(-999);
+
+                bounds.setMinlon(1000);
+                bounds.setMaxlon(-999);
+                // Iterate over all nodes, setting minimum and maximum as necessary
+
+                for (OsmNode node: root.getNodes())
+                {
+                    bounds.setMinlat(min(bounds.getMinlat(), node.getLat()));
+                    bounds.setMinlon(min(bounds.getMinlon(), node.getLon()));
+
+                    bounds.setMaxlat(max(bounds.getMaxlat(), node.getLat()));
+                    bounds.setMaxlon(max(bounds.getMaxlon(), node.getLon()));
+                }
+            }
+        }
     }
 
     private static Digester createOsmPlanetDigester()
