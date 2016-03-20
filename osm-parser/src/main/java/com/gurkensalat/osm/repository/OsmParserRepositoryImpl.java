@@ -1,5 +1,6 @@
 package com.gurkensalat.osm.repository;
 
+import com.gurkensalat.osm.entity.OsmBounds;
 import com.gurkensalat.osm.entity.OsmNode;
 import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
@@ -103,6 +104,11 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         Digester digester = new Digester();
 
         digester.addObjectCreate("osm", OsmRoot.class);
+
+        String path_osm_bounds = "osm/bounds";
+        digester.addObjectCreate(path_osm_bounds, OsmBounds.class);
+        digester.addSetProperties(path_osm_bounds);
+        digester.addSetNext(path_osm_bounds, "setBounds");
 
         String path_osm_node = "osm/node";
         digester.addObjectCreate(path_osm_node, OsmNode.class);
