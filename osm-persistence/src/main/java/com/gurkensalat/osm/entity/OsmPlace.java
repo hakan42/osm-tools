@@ -1,5 +1,7 @@
 package com.gurkensalat.osm.entity;
 
+import org.joda.time.DateTime;
+
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -16,6 +18,16 @@ public class OsmPlace extends OsmPlaceBase
     public OsmPlace(String name, PlaceType type)
     {
         super(name, type);
+
+        if (getCreationTime() == null)
+        {
+            setCreationTime(DateTime.now());
+        }
+
+        if (getModificationTime() == null)
+        {
+            setModificationTime(DateTime.now());
+        }
     }
 
     public OsmPlace(OsmNode node)

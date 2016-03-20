@@ -3,6 +3,7 @@ package com.gurkensalat.osm.repository;
 import com.gurkensalat.osm.SimpleConfiguration;
 import com.gurkensalat.osm.entity.OsmPlace;
 import com.gurkensalat.osm.entity.PlaceType;
+import org.joda.time.DateTime;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
