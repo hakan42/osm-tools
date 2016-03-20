@@ -1,5 +1,6 @@
 package com.gurkensalat.osm.repository;
 
+import com.gurkensalat.osm.entity.OsmBounds;
 import com.gurkensalat.osm.entity.OsmNode;
 import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
@@ -15,7 +16,6 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class OsmParserRepositoryImplTest
 {
@@ -40,13 +40,14 @@ public class OsmParserRepositoryImplTest
         assertNotNull(root);
         assertEquals(1, root.getNodes().size());
 
-        assertNotNull(root.getBounds());
+        OsmBounds bounds = root.getBounds();
+        assertNotNull(bounds);
 
-        assertEquals(11.38729, root.getBounds().getMinlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMinlat(), 0.001);
+        assertEquals(11.38729, bounds.getMinlon(), 0.001);
+        assertEquals(48.13640, bounds.getMinlat(), 0.001);
 
-        assertEquals(11.38789, root.getBounds().getMaxlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMaxlat(), 0.001);
+        assertEquals(11.38789, bounds.getMaxlon(), 0.001);
+        assertEquals(48.13640, bounds.getMaxlat(), 0.001);
     }
 
     @Test
@@ -61,13 +62,14 @@ public class OsmParserRepositoryImplTest
         assertNotNull(root);
         assertEquals(1, root.getNodes().size());
 
-        assertNotNull(root.getBounds());
+        OsmBounds bounds = root.getBounds();
+        assertNotNull(bounds);
 
-        assertEquals(11.38729, root.getBounds().getMinlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMinlat(), 0.001);
+        assertEquals(11.38729, bounds.getMinlon(), 0.001);
+        assertEquals(48.13640, bounds.getMinlat(), 0.001);
 
-        assertEquals(11.38789, root.getBounds().getMaxlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMaxlat(), 0.001);
+        assertEquals(11.38789, bounds.getMaxlon(), 0.001);
+        assertEquals(48.13640, bounds.getMaxlat(), 0.001);
     }
 
     @Test
@@ -82,13 +84,14 @@ public class OsmParserRepositoryImplTest
         assertNotNull(root);
         assertEquals(1, root.getNodes().size());
 
-        assertNotNull(root.getBounds());
+        OsmBounds bounds = root.getBounds();
+        assertNotNull(bounds);
 
-        assertEquals(32.85197, root.getBounds().getMinlon(), 0.001);
-        assertEquals(39.92723, root.getBounds().getMinlat(), 0.001);
+        assertEquals(32.85197, bounds.getMinlon(), 0.001);
+        assertEquals(39.92723, bounds.getMinlat(), 0.001);
 
-        assertEquals(32.85197, root.getBounds().getMaxlon(), 0.001);
-        assertEquals(39.92723, root.getBounds().getMaxlat(), 0.001);
+        assertEquals(32.85197, bounds.getMaxlon(), 0.001);
+        assertEquals(39.92723, bounds.getMaxlat(), 0.001);
     }
 
     @Test
@@ -115,12 +118,13 @@ public class OsmParserRepositoryImplTest
             assertNotNull(tag.getValue());
         }
 
-        assertNotNull(root.getBounds());
+        OsmBounds bounds = root.getBounds();
+        assertNotNull(bounds);
 
-        assertEquals(11.38729, root.getBounds().getMinlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMinlat(), 0.001);
+        assertEquals(11.38729, bounds.getMinlon(), 0.001);
+        assertEquals(48.13640, bounds.getMinlat(), 0.001);
 
-        assertEquals(11.38789, root.getBounds().getMaxlon(), 0.001);
-        assertEquals(48.13640, root.getBounds().getMaxlat(), 0.001);
+        assertEquals(11.38789, bounds.getMaxlon(), 0.001);
+        assertEquals(48.13640, bounds.getMaxlat(), 0.001);
     }
 }
