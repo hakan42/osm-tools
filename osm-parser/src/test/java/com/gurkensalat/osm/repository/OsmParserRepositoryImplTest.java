@@ -152,6 +152,10 @@ public class OsmParserRepositoryImplTest
         assertNotNull(way.getNd());
         assertEquals(5, way.getNd().size());
 
+        assertTrue(way.isCentroidValid());
+        assertEquals(30.57980, way.getLon(), 0.001);
+        assertEquals(37.82062, way.getLat(), 0.001);
+
         OsmBounds bounds = root.getBounds();
         assertNotNull(bounds);
 
@@ -183,6 +187,10 @@ public class OsmParserRepositoryImplTest
 
         assertNotNull(way.getNd());
         assertEquals(5, way.getNd().size());
+
+        assertTrue(way.isCentroidValid());
+        assertEquals(30.30288, way.getLon(), 0.001);
+        assertEquals(37.94384, way.getLat(), 0.001);
 
         OsmBounds bounds = root.getBounds();
         assertNotNull(bounds);

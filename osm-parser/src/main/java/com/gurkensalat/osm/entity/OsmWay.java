@@ -13,9 +13,21 @@ public class OsmWay
 
     private double lon;
 
+    private boolean centroidValid;
+
     private List<OsmWayNodeReference> nd = new ArrayList<OsmWayNodeReference>();
 
     private List<OsmWayTag> tags = new ArrayList<OsmWayTag>();
+
+    public boolean isCentroidValid()
+    {
+        return centroidValid;
+    }
+
+    public void setCentroidValid(boolean centroidValid)
+    {
+        this.centroidValid = centroidValid;
+    }
 
     public void addTag(OsmWayTag tag)
     {

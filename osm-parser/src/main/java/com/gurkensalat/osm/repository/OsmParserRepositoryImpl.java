@@ -20,7 +20,11 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
+import java.util.Map;
+import java.util.TreeMap;
 
+import static java.lang.Boolean.FALSE;
+import static java.lang.Boolean.TRUE;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static org.apache.commons.io.IOUtils.closeQuietly;
@@ -58,6 +62,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.info("  were trying to read {}", resourceFile);
         }
 
+        calculateWayCentroids(root);
         calculateBounds(root);
         return root;
     }
@@ -80,6 +85,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.error("While parsing OSM XML", e);
         }
 
+        calculateWayCentroids(root);
         calculateBounds(root);
         return root;
     }
@@ -103,11 +109,13 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             LOGGER.error("While fetching OSM node from API", e);
         }
 
+        calculateWayCentroids(root);
         calculateBounds(root);
         return root;
     }
 
-    private void calculateBounds(OsmRoot root)
+    /* package level protection for unit testing */
+    void calculateBounds(OsmRoot root)
     {
         OsmBounds bounds = root.getBounds();
         if (bounds == null)
@@ -134,6 +142,70 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
                     bounds.setMaxlat(max(bounds.getMaxlat(), node.getLat()));
                     bounds.setMaxlon(max(bounds.getMaxlon(), node.getLon()));
+                }
+            }
+        }
+    }
+
+    /* package level protection for unit testing */
+    void calculateWayCentroids(OsmRoot root)
+    {
+        Map<String, OsmNode> nodeMap = new TreeMap<String, OsmNode>();
+
+        if (root.getNodes() != null)
+        {
+            for (OsmNode node : root.getNodes())
+            {
+                String key = Long.toString(node.getId());
+                nodeMap.put(key, node);
+            }
+        }
+
+        if (root.getWays() != null)
+        {
+            for (OsmWay way : root.getWays())
+            {
+                way.setCentroidValid(FALSE);
+
+                if (way.getNd() != null)
+                {
+                    way.setCentroidValid(TRUE);
+                    double sumOfNodeLats = 0;
+                    double sumOfNodeLons = 0;
+                    double centroidNodes = 0;
+
+                    for (OsmWayNodeReference reference : way.getNd())
+                    {
+                        if (way.isCentroidValid())
+                        {
+                            String key = reference.getRef();
+                            OsmNode node = nodeMap.get(key);
+                            if (node != null)
+                            {
+                                reference.setNode(node);
+                                sumOfNodeLats += node.getLat();
+                                sumOfNodeLons += node.getLon();
+                                centroidNodes++;
+                            }
+                            else
+                            {
+                                way.setCentroidValid(FALSE);
+                            }
+                        }
+                    }
+
+                    if (way.isCentroidValid())
+                    {
+                        if (centroidNodes > 0)
+                        {
+                            way.setLat(sumOfNodeLats / centroidNodes);
+                            way.setLon(sumOfNodeLons / centroidNodes);
+                        }
+                        else
+                        {
+                            way.setCentroidValid(FALSE);
+                        }
+                    }
                 }
             }
         }
