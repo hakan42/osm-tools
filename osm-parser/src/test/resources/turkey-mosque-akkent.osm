@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="Overpass API">
+<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
+<meta osm_base="2016-03-20T11:00:02Z"/>
+
+  <node id="3903321744" lat="37.8206350" lon="30.5796596"/>
+  <node id="3903321745" lat="37.8204770" lon="30.5797842"/>
+  <node id="3903321746" lat="37.8205910" lon="30.5800158"/>
+  <node id="3903321747" lat="37.8207490" lon="30.5798912"/>
+  <way id="386990497">
+    <nd ref="3903321744"/>
+    <nd ref="3903321745"/>
+    <nd ref="3903321746"/>
+    <nd ref="3903321747"/>
+    <nd ref="3903321744"/>
+    <tag k="amenity" v="place_of_worship"/>
+    <tag k="building" v="yes"/>
+    <tag k="name" v="Akkent Camii"/>
+    <tag k="religion" v="muslim"/>
+  </way>
+
+</osm>

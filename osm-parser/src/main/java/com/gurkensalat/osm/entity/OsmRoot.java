@@ -12,6 +12,8 @@ public class OsmRoot
 
     private List<OsmNode> nodes = new ArrayList<OsmNode>();
 
+    private List<OsmWay> ways = new ArrayList<OsmWay>();
+
     @XmlElement(name = "bounds")
     public OsmBounds getBounds()
     {
@@ -37,6 +39,22 @@ public class OsmRoot
     public void setNodes(List<OsmNode> nodes)
     {
         this.nodes = nodes;
+    }
+
+    @XmlElement(name = "way")
+    public List<OsmWay> getWays()
+    {
+        return ways;
+    }
+
+    public void setWays(List<OsmWay> ways)
+    {
+        this.ways = ways;
+    }
+
+    public void addWay(OsmWay way)
+    {
+        this.ways.add(way);
     }
 
 }

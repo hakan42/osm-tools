@@ -4,6 +4,9 @@ import com.gurkensalat.osm.entity.OsmBounds;
 import com.gurkensalat.osm.entity.OsmNode;
 import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
+import com.gurkensalat.osm.entity.OsmWay;
+import com.gurkensalat.osm.entity.OsmWayNodeReference;
+import com.gurkensalat.osm.entity.OsmWayTag;
 import org.apache.commons.digester3.Digester;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,7 +21,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URI;
 
-import static java.lang.Math.*;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
 @Component
@@ -123,7 +127,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
                 bounds.setMaxlon(-999);
                 // Iterate over all nodes, setting minimum and maximum as necessary
 
-                for (OsmNode node: root.getNodes())
+                for (OsmNode node : root.getNodes())
                 {
                     bounds.setMinlat(min(bounds.getMinlat(), node.getLat()));
                     bounds.setMinlon(min(bounds.getMinlon(), node.getLon()));
@@ -155,6 +159,21 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         digester.addObjectCreate(path_osm_node_tag, OsmNodeTag.class);
         digester.addSetProperties(path_osm_node_tag);
         digester.addSetNext(path_osm_node_tag, "addTag");
+
+        String path_osm_way = "osm/way";
+        digester.addObjectCreate(path_osm_way, OsmWay.class);
+        digester.addSetProperties(path_osm_way);
+        digester.addSetNext(path_osm_way, "addWay");
+
+        String path_osm_way_tag = "osm/way/tag";
+        digester.addObjectCreate(path_osm_way_tag, OsmWayTag.class);
+        digester.addSetProperties(path_osm_way_tag);
+        digester.addSetNext(path_osm_way_tag, "addTag");
+
+        String path_osm_way_node_ref = "osm/way/nd";
+        digester.addObjectCreate(path_osm_way_node_ref, OsmWayNodeReference.class);
+        digester.addSetProperties(path_osm_way_node_ref);
+        digester.addSetNext(path_osm_way_node_ref, "addNodeReference");
 
         return digester;
     }
