@@ -79,42 +79,63 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
             String key = tag.getKey().toLowerCase();
             String val = tag.getValue();
 
-            if ("name".equals(key))
-            {
-                this.setName(val);
-            }
-            else if ("addr:street".equals(key))
-            {
-                this.getAddress().setStreet(val);
-            }
-            else if ("addr:housenumber".equals(key))
-            {
-                this.getAddress().setHousenumber(val);
-            }
-            else if ("addr:postcode".equals(key))
-            {
-                this.getAddress().setPostcode(val);
-            }
-            else if ("addr:city".equals(key))
-            {
-                this.getAddress().setCity(val);
-            }
-            else if ("contact:phone".equals(key) || "phone".equals(key))
-            {
-                this.getContact().setPhone(val);
-            }
-            else if ("contact:fax".equals(key) || "fax".equals(key))
-            {
-                this.getContact().setFax(val);
-            }
-            else if ("contact:website".equals(key) || "website".equals(key))
-            {
-                this.getContact().setWebsite(val);
-            }
-            else if ("contact:email".equals(key) || "email".equals(key))
-            {
-                this.getContact().setEmail(val);
-            }
+            useTag(key, val);
+        }
+    }
+
+    public OsmPlaceBase(OsmWay way)
+    {
+        this.setLat(way.getLat());
+        this.setLon(way.getLon());
+        this.setAddress(new Address());
+        this.setContact(new Contact());
+
+        for (OsmNodeTag tag : way.getTags())
+        {
+            String key = tag.getKey().toLowerCase();
+            String val = tag.getValue();
+
+            useTag(key, val);
+        }
+    }
+
+    private void useTag(String key, String val)
+    {
+        if ("name".equals(key))
+        {
+            this.setName(val);
+        }
+        else if ("addr:street".equals(key))
+        {
+            this.getAddress().setStreet(val);
+        }
+        else if ("addr:housenumber".equals(key))
+        {
+            this.getAddress().setHousenumber(val);
+        }
+        else if ("addr:postcode".equals(key))
+        {
+            this.getAddress().setPostcode(val);
+        }
+        else if ("addr:city".equals(key))
+        {
+            this.getAddress().setCity(val);
+        }
+        else if ("contact:phone".equals(key) || "phone".equals(key))
+        {
+            this.getContact().setPhone(val);
+        }
+        else if ("contact:fax".equals(key) || "fax".equals(key))
+        {
+            this.getContact().setFax(val);
+        }
+        else if ("contact:website".equals(key) || "website".equals(key))
+        {
+            this.getContact().setWebsite(val);
+        }
+        else if ("contact:email".equals(key) || "email".equals(key))
+        {
+            this.getContact().setEmail(val);
         }
     }
 
