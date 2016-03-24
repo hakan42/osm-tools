@@ -121,6 +121,10 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         {
             this.getAddress().setCity(val);
         }
+        else if ("addr:country".equals(key))
+        {
+            this.getAddress().setCountry(val);
+        }
         else if ("contact:phone".equals(key) || "phone".equals(key))
         {
             this.getContact().setPhone(val);
