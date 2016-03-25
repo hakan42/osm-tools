@@ -7,7 +7,9 @@ import com.gurkensalat.osm.entity.OsmRoot;
 import com.gurkensalat.osm.entity.OsmWay;
 import com.gurkensalat.osm.entity.OsmWayNodeReference;
 import com.gurkensalat.osm.entity.OsmWayTag;
+import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.apache.commons.digester3.Digester;
+import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -19,6 +21,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.net.URI;
 import java.util.Map;
 import java.util.TreeMap;
@@ -45,12 +48,15 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         try
         {
             FileInputStream fis = new FileInputStream(resourceFile);
+            InputStreamReader reader = new InputStreamReader(fis, CharEncoding.UTF_8);
+
             try
             {
                 root = parse(fis);
             }
             finally
             {
+                closeQuietly(reader);
                 closeQuietly(fis);
             }
 
