@@ -11,5 +11,7 @@ public interface OsmParserRepository
 
     OsmRoot parse(InputStream inputStream);
 
-    OsmRoot loadFromServer(long osmId);
+    OsmRoot loadNodeFromServer(long osmId);
+
+    OsmRoot loadWayFromServer(long osmId);
 }

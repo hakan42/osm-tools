@@ -7,7 +7,6 @@ import com.gurkensalat.osm.entity.OsmRoot;
 import com.gurkensalat.osm.entity.OsmWay;
 import com.gurkensalat.osm.entity.OsmWayNodeReference;
 import com.gurkensalat.osm.entity.OsmWayTag;
-import com.sun.corba.se.spi.orbutil.fsm.Input;
 import org.apache.commons.digester3.Digester;
 import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
@@ -37,9 +36,11 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(OsmParserRepositoryImpl.class);
 
-    private final static String API_NODE_HOST = "api.openstreetmap.org";
+    private final static String API_HOST = "api.openstreetmap.org";
 
     private final static String API_NODE_PATH = "/api/0.6/node";
+
+    private final static String API_WAY_PATH = "/api/0.6/way";
 
     public OsmRoot parse(File resourceFile)
     {
@@ -96,12 +97,36 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         return root;
     }
 
-    public OsmRoot loadFromServer(long osmId)
+    public OsmRoot loadNodeFromServer(long osmId)
     {
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_NODE_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
+
+            URI uri = builder.build().toUri();
+
+            LOGGER.debug("Loading from {}", uri.toString());
+
+            RestTemplate restTemplate = new RestTemplate();
+            root = restTemplate.getForObject(uri, OsmRoot.class);
+        }
+        catch (Exception e)
+        {
+            LOGGER.error("While fetching OSM node from API", e);
+        }
+
+        calculateWayCentroids(root);
+        calculateBounds(root);
+        return root;
+    }
+
+    public OsmRoot loadWayFromServer(long osmId)
+    {
+        OsmRoot root = new OsmRoot();
+        try
+        {
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_HOST + API_WAY_PATH + "/" + Long.toString(osmId));
 
             URI uri = builder.build().toUri();
 
