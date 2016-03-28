@@ -2,9 +2,9 @@ package com.gurkensalat.osm.entity;
 
 public enum OsmEntityType
 {
-    NODE("N"),
-    WAY("W"),
-    REL("R");
+    NODE("Node"),
+    WAY("Way"),
+    REL("Relation");
 
     private final String name;
 
