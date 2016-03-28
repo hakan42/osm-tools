@@ -33,9 +33,13 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     @LastModifiedDate
     private DateTime modificationTime;
 
-    @Column(name = "TYPE", length = 20)
+    @Column(name = "TYPE", length = 2)
     @Enumerated(EnumType.STRING)
-    private PlaceType type;
+    private OsmEntityType type;
+
+    @Column(name = "PLACE_TYPE", length = 20)
+    @Enumerated(EnumType.STRING)
+    private PlaceType placeType;
 
     @Column(name = "D_KEY", length = 80)
     private String key;
@@ -62,7 +66,6 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     public OsmPlaceBase(String name, PlaceType type)
     {
         this.setName(name);
-        this.setType(type);
         this.setAddress(new Address());
         this.setContact(new Contact());
     }
@@ -150,6 +153,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         other.setLat(getLat());
         other.setName(getName());
         other.setType(getType());
+        other.setPlaceType(getPlaceType());
         other.setKey(getKey());
         other.setValid(isValid());
 
@@ -269,14 +273,24 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         this.name = name;
     }
 
-    public PlaceType getType()
+    public OsmEntityType getType()
     {
         return type;
     }
 
-    public void setType(PlaceType type)
+    public void setType(OsmEntityType type)
     {
         this.type = type;
+    }
+
+    public PlaceType getPlaceType()
+    {
+        return placeType;
+    }
+
+    public void setPlaceType(PlaceType placeType)
+    {
+        this.placeType = placeType;
     }
 
     public Integer getVersion()
@@ -296,7 +310,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
                 .append("lat", lat)
                 .append("lon", lon)
                 .append("name", name)
-                .append("type", type)
+                .append("placeType", placeType)
                 .append("address", address)
                 .append("contact", contact)
                 .toString();

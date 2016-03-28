@@ -1,8 +1,20 @@
 package com.gurkensalat.osm.entity;
 
-/**
- * Created by hakan on 28.03.16.
- */
-public class OsmEntityType
+public enum OsmEntityType
 {
+    NODE("N"),
+    WAY("W"),
+    RELATION("R");
+
+    private final String name;
+
+    private OsmEntityType(String name)
+    {
+        this.name = name;
+    }
+
+    public String toString()
+    {
+        return name;
+    }
 }
