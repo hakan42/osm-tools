@@ -4,7 +4,7 @@ public enum OsmEntityType
 {
     NODE("N"),
     WAY("W"),
-    RELATION("R");
+    REL("R");
 
     private final String name;
 
