@@ -11,7 +11,9 @@ import org.apache.commons.digester3.Digester;
 import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.xml.sax.SAXException;
@@ -111,6 +113,14 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             RestTemplate restTemplate = new RestTemplate();
             root = restTemplate.getForObject(uri, OsmRoot.class);
         }
+        catch (HttpClientErrorException hcee)
+        {
+            if (HttpStatus.GONE == hcee.getStatusCode())
+            {
+                LOGGER.info("Object is gone...");
+                root.setGone(true);
+            }
+        }
         catch (Exception e)
         {
             LOGGER.error("While fetching OSM node from API", e);
@@ -134,6 +144,14 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
             RestTemplate restTemplate = new RestTemplate();
             root = restTemplate.getForObject(uri, OsmRoot.class);
+        }
+        catch (HttpClientErrorException hcee)
+        {
+            if (HttpStatus.GONE == hcee.getStatusCode())
+            {
+                LOGGER.info("Object is gone...");
+                root.setGone(true);
+            }
         }
         catch (Exception e)
         {

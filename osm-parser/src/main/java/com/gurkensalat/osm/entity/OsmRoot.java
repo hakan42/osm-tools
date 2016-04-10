@@ -10,6 +10,8 @@ public class OsmRoot
 {
     private OsmBounds bounds;
 
+    private boolean gone;
+
     private List<OsmNode> nodes = new ArrayList<OsmNode>();
 
     private List<OsmWay> ways = new ArrayList<OsmWay>();
@@ -23,6 +25,16 @@ public class OsmRoot
     public void setBounds(OsmBounds bounds)
     {
         this.bounds = bounds;
+    }
+
+    public boolean isGone()
+    {
+        return gone;
+    }
+
+    public void setGone(boolean gone)
+    {
+        this.gone = gone;
     }
 
     public void addNode(OsmNode node)
