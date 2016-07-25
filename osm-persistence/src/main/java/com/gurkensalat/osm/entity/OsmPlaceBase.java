@@ -53,6 +53,9 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     @Column(name = "NAME", length = 80)
     private String name;
 
+    @Column(name = "IMAGE", length = 200)
+    private String image;
+
     private Address address;
 
     private Contact contact;
@@ -144,6 +147,10 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         {
             this.getContact().setEmail(val);
         }
+        else if ("image".equals(key))
+        {
+            this.setImage(val);
+        }
     }
 
 
@@ -152,6 +159,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         other.setLon(getLon());
         other.setLat(getLat());
         other.setName(getName());
+        other.setImage(getImage());
         other.setType(getType());
         other.setPlaceType(getPlaceType());
         other.setKey(getKey());
@@ -271,6 +279,16 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     public void setName(String name)
     {
         this.name = name;
+    }
+
+    public String getImage()
+    {
+        return image;
+    }
+
+    public void setImage(String image)
+    {
+        this.image = image;
     }
 
     public OsmEntityType getType()
