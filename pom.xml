@@ -24,10 +24,15 @@
 
         <maven-prerequisite.version>3.2.0</maven-prerequisite.version>
 
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
         <!-- Maven plugin versions -->
         <plugin.gmaven-plugin.version>1.5</plugin.gmaven-plugin.version>
         <maven-clean-plugin.version>3.0.0</maven-clean-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
         <maven-dependency-plugin.version>2.10</maven-dependency-plugin.version>
+        <maven-enforcer-plugin.version>3.0.0-M2</maven-enforcer-plugin.version>
         <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
         <maven-javadoc-plugin.version>2.10.3</maven-javadoc-plugin.version>
         <maven-source-plugin.version>2.4</maven-source-plugin.version>
@@ -44,9 +49,10 @@
 
         <!-- Spring / Spring Boot versions -->
         <spring.version>4.2.4.RELEASE</spring.version>
-        <spring-boot.version>1.3.2.RELEASE</spring-boot.version>
-        <spring-data.version>1.9.2.RELEASE</spring-data.version>
-        <spring-data-rest.version>2.4.2.RELEASE</spring-data-rest.version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
+        <spring-data.version>2.1.8.RELEASE</spring-data.version>
+        <spring-data-rest-core.version>2.0.0.RELEASE</spring-data-rest-core.version>
+        <spring-data-rest.version>3.1.1.0.RELEASE</spring-data-rest.version>
 
         <commons-io.version>2.4</commons-io.version>
         <commons-lang.version>3.3.2</commons-lang.version>
@@ -85,10 +91,6 @@
         <spring-boot.start.class>none</spring-boot.start.class>
 
     </properties>
-
-    <prerequisites>
-        <maven>${maven-prerequisite.version}</maven>
-    </prerequisites>
 
     <!-- variables in scm urls make gh-pages site uploads fail -->
     <scm>
@@ -196,7 +198,7 @@
             <dependency>
                 <groupId>org.springframework.data</groupId>
                 <artifactId>spring-data-rest-core</artifactId>
-                <version>${spring-data-rest.version}</version>
+                <version>${spring-data-rest-core.version}</version>
             </dependency>
 
             <dependency>
@@ -407,6 +409,42 @@
     <build>
         <pluginManagement>
             <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <version>${maven-enforcer-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>enforce-maven</id>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireMavenVersion>
+                                        <version>${maven-prerequisite.version}</version>
+                                    </requireMavenVersion>
+                                </rules>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${maven-compiler-plugin.version}</version>
+                    <executions>
+                        <execution>
+                            <id>default-compile</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>

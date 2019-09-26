@@ -74,21 +74,24 @@ public class OsmPlaceRepositoryTest
         placeTR.getAddress().setCountry("TR");
         placeTR = osmPlaceRepository.save(placeTR);
 
+        // TODO replace findById(..).orElse() by proper use of Optionals
+        // https://stackoverflow.com/questions/44101061/missing-crudrepositoryfindone-method
+
         // Reload and check validity
-        placeDE = osmPlaceRepository.findOne(placeDE.getId());
+        placeDE = osmPlaceRepository.findById(placeDE.getId()).orElse(null);
         assertTrue("Place should have been valid", placeDE.isValid());
 
-        placeTR = osmPlaceRepository.findOne(placeTR.getId());
+        placeTR = osmPlaceRepository.findById(placeTR.getId()).orElse(null);
         assertTrue("Place should have been valid", placeTR.isValid());
 
         // Invalidate part of the entries
         osmPlaceRepository.invalidateByCountryCode("TR");
 
         // Reload and check validity, again...
-        placeDE = osmPlaceRepository.findOne(placeDE.getId());
+        placeDE = osmPlaceRepository.findById(placeDE.getId()).orElse(null);
         assertTrue("Place should have been valid", placeDE.isValid());
 
-        placeTR = osmPlaceRepository.findOne(placeTR.getId());
+        placeTR = osmPlaceRepository.findById(placeTR.getId()).orElse(null);
         assertFalse("Place should NOT have been valid", placeTR.isValid());
     }
 }
