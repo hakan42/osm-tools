@@ -104,7 +104,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://" + API_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
 
             URI uri = builder.build().toUri();
 
