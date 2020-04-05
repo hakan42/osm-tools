@@ -1,5 +1,8 @@
 package com.gurkensalat.osm.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.joda.time.DateTime;
 
 import javax.persistence.Entity;
@@ -7,13 +10,12 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "OSM_PLACES")
+@Getter
+@Setter
+@NoArgsConstructor
 public class OsmPlace extends OsmPlaceBase
 {
     private transient String mapUrl;
-
-    protected OsmPlace()
-    {
-    }
 
     public OsmPlace(String name, PlaceType type)
     {
@@ -33,15 +35,5 @@ public class OsmPlace extends OsmPlaceBase
     public OsmPlace(OsmNode node)
     {
         super(node);
-    }
-
-    public String getMapUrl()
-    {
-        return mapUrl;
-    }
-
-    public void setMapUrl(String mapUrl)
-    {
-        this.mapUrl = mapUrl;
     }
 }

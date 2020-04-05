@@ -1,5 +1,8 @@
 package com.gurkensalat.osm.entity;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
@@ -10,6 +13,9 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "OSM_TAGS")
+@Getter
+@Setter
+@NoArgsConstructor
 public class OsmTag extends AbstractPersistable<Long>
 {
     @Version
@@ -31,72 +37,8 @@ public class OsmTag extends AbstractPersistable<Long>
     @Column(name = "D_VAL", length = 80)
     private String value;
 
-    public OsmTag()
-    {
-    }
-
     public void copyTo(OsmTag other)
     {
-    }
-
-    public Integer getVersion()
-    {
-        return version;
-    }
-
-    public void setVersion(Integer version)
-    {
-        this.version = version;
-    }
-
-    public boolean isValid()
-    {
-        return valid;
-    }
-
-    public void setValid(boolean valid)
-    {
-        this.valid = valid;
-    }
-
-    public String getParentTable()
-    {
-        return parentTable;
-    }
-
-    public void setParentTable(String parentTable)
-    {
-        this.parentTable = parentTable;
-    }
-
-    public Long getParentId()
-    {
-        return parentId;
-    }
-
-    public void setParentId(Long parentId)
-    {
-        this.parentId = parentId;
-    }
-
-    public String getKey()
-    {
-        return key;
-    }
-
-    public void setKey(String key)
-    {
-        this.key = key;
-    }
-
-    public String getValue()
-    {
-        return value;
-    }
-
-    public void setValue(String value)
-    {
-        this.value = value;
     }
 
     public String toString()

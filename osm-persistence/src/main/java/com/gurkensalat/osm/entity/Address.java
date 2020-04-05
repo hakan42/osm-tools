@@ -1,12 +1,20 @@
 package com.gurkensalat.osm.entity;
 
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString
 public class Address
 {
     @Column(name = "ADDR_STREET", length = 80)
@@ -27,10 +35,6 @@ public class Address
     @Column(name = "ADDR_COUNTRY", length = 80)
     private String country;
 
-    public Address()
-    {
-    }
-
     public void copyTo(Address other)
     {
         other.setStreet(getStreet());
@@ -39,66 +43,6 @@ public class Address
         other.setCity(getCity());
         other.setState(getState());
         other.setCountry(getCountry());
-    }
-
-    public String getCity()
-    {
-        return city;
-    }
-
-    public void setCity(String city)
-    {
-        this.city = city;
-    }
-
-    public String getStreet()
-    {
-        return street;
-    }
-
-    public void setStreet(String street)
-    {
-        this.street = street;
-    }
-
-    public String getHousenumber()
-    {
-        return housenumber;
-    }
-
-    public void setHousenumber(String housenumber)
-    {
-        this.housenumber = housenumber;
-    }
-
-    public String getPostcode()
-    {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode)
-    {
-        this.postcode = postcode;
-    }
-
-    public String getState()
-    {
-        return state;
-    }
-
-    public void setState(String state)
-    {
-        this.state = state;
-    }
-
-    public String getCountry()
-    {
-        return country;
-    }
-
-    public void setCountry(String country)
-    {
-        this.country = country;
     }
 
     public String toString()

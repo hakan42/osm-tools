@@ -75,8 +75,9 @@
         <mysqldb.version>5.1.32</mysqldb.version>
 
         <!-- Sundry other libraries -->
-        <simplelatlng.version>1.3.0</simplelatlng.version>
+        <lombok.version>1.18.12</lombok.version>
         <javax-interceptor-api.version>1.2</javax-interceptor-api.version>
+        <simplelatlng.version>1.3.0</simplelatlng.version>
 
         <!-- Logging -->
         <slf4j.version>1.7.14</slf4j.version>
@@ -247,6 +248,13 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <scope>provided</scope>
+                <version>${lombok.version}</version>
             </dependency>
 
             <!-- Logging -->

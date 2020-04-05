@@ -1,5 +1,7 @@
 package com.gurkensalat.osm.entity;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
@@ -14,6 +16,9 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
 @MappedSuperclass
+@Getter
+@Setter
+// @NoArgsConstructor
 public abstract class OsmPlaceBase extends AbstractPersistable<Long>
 {
     @Version
@@ -153,7 +158,6 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         }
     }
 
-
     public void copyTo(OsmPlace other)
     {
         other.setLon(getLon());
@@ -190,137 +194,11 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         getContact().copyTo(other.getContact());
     }
 
-    public boolean isValid()
-    {
-        return valid;
-    }
-
     public void setValid(boolean valid)
     {
         this.valid = valid;
         this.setModificationTime(DateTime.now());
     }
-
-    public DateTime getCreationTime()
-    {
-        return creationTime;
-    }
-
-    public void setCreationTime(DateTime creationTime)
-    {
-        this.creationTime = creationTime;
-    }
-
-    public DateTime getModificationTime()
-    {
-        return modificationTime;
-    }
-
-    public void setModificationTime(DateTime modificationTime)
-    {
-        this.modificationTime = modificationTime;
-    }
-
-    public Address getAddress()
-    {
-        return address;
-    }
-
-    public void setAddress(Address address)
-    {
-        this.address = address;
-    }
-
-    public Contact getContact()
-    {
-        return contact;
-    }
-
-    public void setContact(Contact contact)
-    {
-        this.contact = contact;
-    }
-
-    public double getLat()
-    {
-        return lat;
-    }
-
-    public void setLat(double lat)
-    {
-        this.lat = lat;
-    }
-
-    public double getLon()
-    {
-        return lon;
-    }
-
-    public void setLon(double lon)
-    {
-        this.lon = lon;
-    }
-
-    public String getKey()
-    {
-        return key;
-    }
-
-    public void setKey(String key)
-    {
-        this.key = key;
-    }
-
-    public String getName()
-    {
-        return name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public String getImage()
-    {
-        return image;
-    }
-
-    public void setImage(String image)
-    {
-        this.image = image;
-    }
-
-    public OsmEntityType getType()
-    {
-        return type;
-    }
-
-    public void setType(OsmEntityType type)
-    {
-        this.type = type;
-    }
-
-    public PlaceType getPlaceType()
-    {
-        return placeType;
-    }
-
-    public void setPlaceType(PlaceType placeType)
-    {
-        this.placeType = placeType;
-    }
-
-    public Integer getVersion()
-    {
-        return version;
-    }
-
-    public void setVersion(Integer version)
-    {
-        this.version = version;
-    }
-
 
     public String toString()
     {
