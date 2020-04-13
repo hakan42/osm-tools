@@ -1,0 +1,37 @@
+{
+  "version": "0.6",
+  "generator": "CGImap 0.8.1 (23042 thorn-01.openstreetmap.org)",
+  "copyright": "OpenStreetMap and contributors",
+  "attribution": "http://www.openstreetmap.org/copyright",
+  "license": "http://opendatacommons.org/licenses/odbl/1-0/",
+  "elements": [
+    {
+      "type": "node",
+      "id": 904317998,
+      "lat": 48.1364,
+      "lon": 11.3872928,
+      "timestamp": "2016-03-25T21:48:40Z",
+      "version": 9,
+      "changeset": 38072523,
+      "user": "hakan",
+      "uid": 4388,
+      "tags": {
+        "addr:city": "Germering",
+        "addr:country": "DE",
+        "addr:housenumber": "13a",
+        "addr:postcode": "82110",
+        "addr:street": "Münchener Straße",
+        "alt_name": "Türkisch Islamische Gemeinde Germering",
+        "alt_name:de": "Türkisch Islamische Gemeinde Germering",
+        "alt_name:tr": "Türk Islam Kültür Cemiyeti",
+        "amenity": "place_of_worship",
+        "ditib:code": "de-82110-19-7",
+        "name": "Germering Camii",
+        "name:de": "Moschee Germering",
+        "name:tr": "Germering Camii",
+        "religion": "muslim",
+        "wheelchair": "yes"
+      }
+    }
+  ]
+}

@@ -9,3 +9,7 @@ curl --silent https://api.openstreetmap.org/api/0.6/node/904317998 -o germany-mo
 
 curl --silent https://api.openstreetmap.org/api/0.6/way/386990497/full  -o turkey-mosque-akkent.osm 
 curl --silent https://api.openstreetmap.org/api/0.6/way/313651604/full  -o turkey-mosque-keciborlu.osm 
+
+curl --silent --header "Accept: application/json" https://api.openstreetmap.org/api/0.6/node/904317998     | jq "." > germany-mosque-germering.json
+
+curl --silent --header "Accept: application/json" https://api.openstreetmap.org/api/0.6/way/313651604/full | jq "." > turkey-mosque-keciborlu.json

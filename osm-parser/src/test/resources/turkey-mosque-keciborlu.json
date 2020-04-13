@@ -1,0 +1,76 @@
+{
+  "version": "0.6",
+  "generator": "CGImap 0.8.1 (22481 thorn-01.openstreetmap.org)",
+  "copyright": "OpenStreetMap and contributors",
+  "attribution": "http://www.openstreetmap.org/copyright",
+  "license": "http://opendatacommons.org/licenses/odbl/1-0/",
+  "elements": [
+    {
+      "type": "node",
+      "id": 3196594477,
+      "lat": 37.9438922,
+      "lon": 30.3028347,
+      "timestamp": "2019-08-23T07:39:35Z",
+      "version": 2,
+      "changeset": 73652191,
+      "user": "BenWo",
+      "uid": 10231039
+    },
+    {
+      "type": "node",
+      "id": 3196594478,
+      "lat": 37.9437476,
+      "lon": 30.3029175,
+      "timestamp": "2019-08-23T07:39:35Z",
+      "version": 2,
+      "changeset": 73652191,
+      "user": "BenWo",
+      "uid": 10231039
+    },
+    {
+      "type": "node",
+      "id": 3196594479,
+      "lat": 37.9438089,
+      "lon": 30.3030899,
+      "timestamp": "2019-08-23T07:39:35Z",
+      "version": 2,
+      "changeset": 73652191,
+      "user": "BenWo",
+      "uid": 10231039
+    },
+    {
+      "type": "node",
+      "id": 3196594480,
+      "lat": 37.9439535,
+      "lon": 30.3030071,
+      "timestamp": "2019-08-23T07:39:35Z",
+      "version": 2,
+      "changeset": 73652191,
+      "user": "BenWo",
+      "uid": 10231039
+    },
+    {
+      "type": "way",
+      "id": 313651604,
+      "timestamp": "2016-03-19T22:57:24Z",
+      "version": 2,
+      "changeset": 37947345,
+      "user": "hakan",
+      "uid": 4388,
+      "nodes": [
+        3196594477,
+        3196594478,
+        3196594479,
+        3196594480,
+        3196594477
+      ],
+      "tags": {
+        "addr:country": "TR",
+        "amenity": "place_of_worship",
+        "building": "yes",
+        "name": "Ulu Camii",
+        "religion": "muslim"
+      }
+    }
+  ]
+}
