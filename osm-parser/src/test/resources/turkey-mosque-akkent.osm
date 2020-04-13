@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<osm version="0.6" generator="Overpass API">
-<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
-<meta osm_base="2016-03-20T11:00:02Z"/>
-
-  <node id="3903321744" lat="37.8206350" lon="30.5796596"/>
-  <node id="3903321745" lat="37.8204770" lon="30.5797842"/>
-  <node id="3903321746" lat="37.8205910" lon="30.5800158"/>
-  <node id="3903321747" lat="37.8207490" lon="30.5798912"/>
-  <way id="386990497">
-    <nd ref="3903321744"/>
-    <nd ref="3903321745"/>
-    <nd ref="3903321746"/>
-    <nd ref="3903321747"/>
-    <nd ref="3903321744"/>
-    <tag k="amenity" v="place_of_worship"/>
-    <tag k="building" v="yes"/>
-    <tag k="name" v="Akkent Camii"/>
-    <tag k="religion" v="muslim"/>
-  </way>
-
+<osm version="0.6" generator="CGImap 0.8.1 (30643 thorn-03.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3903321744" visible="true" version="2" changeset="48736917" timestamp="2017-05-16T16:58:17Z" user="turankaya74" uid="1845527" lat="37.8205810" lon="30.5795282"/>
+ <node id="3903321745" visible="true" version="2" changeset="48736917" timestamp="2017-05-16T16:58:17Z" user="turankaya74" uid="1845527" lat="37.8204230" lon="30.5796528"/>
+ <node id="3903321746" visible="true" version="2" changeset="48736917" timestamp="2017-05-16T16:58:17Z" user="turankaya74" uid="1845527" lat="37.8205370" lon="30.5798844"/>
+ <node id="3903321747" visible="true" version="2" changeset="48736917" timestamp="2017-05-16T16:58:17Z" user="turankaya74" uid="1845527" lat="37.8206950" lon="30.5797598"/>
+ <way id="386990497" visible="true" version="5" changeset="77591962" timestamp="2019-11-26T18:53:06Z" user="Nesim" uid="1386706">
+  <nd ref="3903321744"/>
+  <nd ref="3903321745"/>
+  <nd ref="3903321746"/>
+  <nd ref="3903321747"/>
+  <nd ref="3903321744"/>
+  <tag k="addr:country" v="TR"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="yes"/>
+  <tag k="denomination" v="sunni"/>
+  <tag k="name" v="Akkent Camii"/>
+  <tag k="religion" v="muslim"/>
+  <tag k="source" v="bing"/>
+  <tag k="wheelchair" v="no"/>
+ </way>
 </osm>

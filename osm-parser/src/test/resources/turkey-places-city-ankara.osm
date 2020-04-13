@@ -1,10 +1,95 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<osm version="0.6" generator="Osmosis 0.43.1">
-  <bounds minlon="35.71373" minlat="25.59553" maxlon="42.45132" maxlat="44.83384" origin="0.43.1"/>
-  <node id="25869410" version="19" timestamp="2012-03-27T11:46:29Z" uid="560896" user="Ghybu" changeset="11115589" lat="39.9272322" lon="32.8519769">
-    <tag k="capital" v="yes"/>
-    <tag k="is_in" v="Turkey"/>
-    <tag k="name" v="Ankara"/>
-    <tag k="place" v="city"/>
-  </node>
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="CGImap 0.8.1 (1646 thorn-01.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="25869410" visible="true" version="49" changeset="74224903" timestamp="2019-09-08T11:57:00Z" user="Robot8A" uid="393359" lat="39.9207774" lon="32.8540670">
+  <tag k="admin_level" v="2"/>
+  <tag k="capital" v="yes"/>
+  <tag k="is_capital" v="country"/>
+  <tag k="is_in:country" v="Turkey"/>
+  <tag k="name" v="Ankara"/>
+  <tag k="name:ab" v="Анкара"/>
+  <tag k="name:am" v="አንካራ"/>
+  <tag k="name:ang" v="Ancyra"/>
+  <tag k="name:ar" v="أنقرة"/>
+  <tag k="name:arc" v="ܐܢܩܪܐ"/>
+  <tag k="name:arz" v="انقره"/>
+  <tag k="name:av" v="Анкара"/>
+  <tag k="name:be" v="Анкара"/>
+  <tag k="name:be-tarask" v="Анкара"/>
+  <tag k="name:bg" v="Анкара"/>
+  <tag k="name:bjn" v="Angkara"/>
+  <tag k="name:bn" v="আঙ্কারা"/>
+  <tag k="name:bo" v="ཨན་ཁ་ར།"/>
+  <tag k="name:cdo" v="Ăng-kā-lá"/>
+  <tag k="name:ckb" v="ئەنقەرە"/>
+  <tag k="name:de" v="Ankara"/>
+  <tag k="name:diq" v="Anqara"/>
+  <tag k="name:el" v="Άγκυρα"/>
+  <tag k="name:en" v="Ankara"/>
+  <tag k="name:eo" v="Ankaro"/>
+  <tag k="name:fa" v="آنکارا"/>
+  <tag k="name:fr" v="Ankara"/>
+  <tag k="name:gl" v="Ancara - Ankara"/>
+  <tag k="name:he" v="אנקרה"/>
+  <tag k="name:hi" v="अंकारा"/>
+  <tag k="name:hu" v="Ankara"/>
+  <tag k="name:hy" v="Անկարա"/>
+  <tag k="name:ie" v="Ancara"/>
+  <tag k="name:is" v="Ankara"/>
+  <tag k="name:ja" v="アンカラ"/>
+  <tag k="name:ka" v="ანკარა"/>
+  <tag k="name:kk" v="Анкара"/>
+  <tag k="name:kn" v="ಅಂಕಾರಾ"/>
+  <tag k="name:ko" v="앙카라"/>
+  <tag k="name:koi" v="Анкара"/>
+  <tag k="name:ku" v="Enqere"/>
+  <tag k="name:ky" v="Анкара"/>
+  <tag k="name:la" v="Ancyra"/>
+  <tag k="name:lbe" v="Анкъара"/>
+  <tag k="name:mdf" v="Анкара"/>
+  <tag k="name:mhr" v="Анкара"/>
+  <tag k="name:mi" v="Anakara"/>
+  <tag k="name:mk" v="Анкара"/>
+  <tag k="name:ml" v="അങ്കാറ"/>
+  <tag k="name:mn" v="Анкара"/>
+  <tag k="name:mr" v="अंकारा"/>
+  <tag k="name:mrj" v="Анкара"/>
+  <tag k="name:mzn" v="آنکارا"/>
+  <tag k="name:nah" v="Ancara"/>
+  <tag k="name:nl" v="Ankara"/>
+  <tag k="name:oc" v="Ankara"/>
+  <tag k="name:os" v="Анкара"/>
+  <tag k="name:pl" v="Ankara"/>
+  <tag k="name:pnb" v="انکرہ"/>
+  <tag k="name:ps" v="انقره"/>
+  <tag k="name:pt" v="Ancara"/>
+  <tag k="name:roa-rup" v="Ancara"/>
+  <tag k="name:ru" v="Анкара"/>
+  <tag k="name:sah" v="Анкара"/>
+  <tag k="name:sr" v="Анкара"/>
+  <tag k="name:sv" v="Ankara"/>
+  <tag k="name:ta" v="அங்காரா"/>
+  <tag k="name:te" v="అంకారా"/>
+  <tag k="name:tg" v="Анкара"/>
+  <tag k="name:th" v="อังการา"/>
+  <tag k="name:tt" v="Әнкара"/>
+  <tag k="name:udm" v="Анкара"/>
+  <tag k="name:ug" v="Enqere"/>
+  <tag k="name:uk" v="Анкара"/>
+  <tag k="name:ur" v="انقرہ"/>
+  <tag k="name:vep" v="Ankar"/>
+  <tag k="name:wuu" v="安卡拉"/>
+  <tag k="name:xmf" v="ანკარა"/>
+  <tag k="name:yi" v="אנקארא"/>
+  <tag k="name:yue" v="安卡拉"/>
+  <tag k="name:zh" v="安卡拉"/>
+  <tag k="old_name:es" v="Angora"/>
+  <tag k="place" v="city"/>
+  <tag k="population" v="4338620"/>
+  <tag k="salb:id" v="TUR007"/>
+  <tag k="salb:name" v="Ankara"/>
+  <tag k="source" v="Wikipedia (tr)"/>
+  <tag k="source:name:oc" v="Lo Congrès"/>
+  <tag k="wikidata" v="Q3640"/>
+  <tag k="wikipedia" v="tr:Ankara"/>
+ </node>
 </osm>

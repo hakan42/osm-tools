@@ -1,60 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<osm version="0.6" generator="Overpass API">
-<note>The data included in this document is from www.openstreetmap.org. The data is made available under ODbL.</note>
-<meta osm_base="2016-03-20T11:01:02Z"/>
-
-  <node id="2354786358" lat="37.5459183" lon="41.7236948"/>
-  <node id="2354786360" lat="37.5460644" lon="41.7238467"/>
-  <node id="2354786362" lat="37.5460584" lon="41.7236864"/>
-  <node id="2354786364" lat="37.5459243" lon="41.7238552"/>
-  <node id="2783726082" lat="41.4531879" lon="31.7889658"/>
-  <node id="2783726086" lat="41.4534090" lon="31.7891045"/>
-  <node id="2789898068" lat="41.4532605" lon="31.7891926"/>
-  <node id="2789898071" lat="41.4533357" lon="31.7888818"/>
-  <node id="3196594477" lat="37.9438738" lon="30.3027810"/>
-  <node id="3196594478" lat="37.9437292" lon="30.3028638"/>
-  <node id="3196594479" lat="37.9437905" lon="30.3030362"/>
-  <node id="3196594480" lat="37.9439351" lon="30.3029534"/>
-  <node id="3417428774" lat="36.2020663" lon="36.1614077"/>
-  <node id="3417428775" lat="36.2021343" lon="36.1614777"/>
-  <node id="3417428776" lat="36.2021456" lon="36.1616248"/>
-  <node id="3417428777" lat="36.2021828" lon="36.1620011"/>
-  <node id="3417428778" lat="36.2021844" lon="36.1620489"/>
-  <node id="3417428779" lat="36.2020749" lon="36.1621297"/>
-  <node id="3417428780" lat="36.2019649" lon="36.1622022"/>
-  <node id="3417428781" lat="36.2016733" lon="36.1617863"/>
-  <node id="3417428782" lat="36.2018302" lon="36.1614227"/>
-  <node id="3465141415" lat="36.2017222" lon="36.1615740"/>
-  <node id="3465141416" lat="36.2017915" lon="36.1614355"/>
-  <node id="3485208784" lat="36.2019417" lon="36.1621605"/>
-  <node id="3485208785" lat="36.2018443" lon="36.1622879"/>
-  <node id="3485208786" lat="36.2016452" lon="36.1620304"/>
-  <node id="3485208787" lat="36.2017664" lon="36.1618963"/>
-  <node id="3535189265" lat="35.1082012" lon="33.9362934"/>
-  <node id="3535189270" lat="35.1083517" lon="33.9367105"/>
-  <node id="3535189272" lat="35.1083929" lon="33.9361901"/>
-  <node id="3535189275" lat="35.1084390" lon="33.9363181"/>
-  <node id="3535189277" lat="35.1084570" lon="33.9363084"/>
-  <node id="3535189279" lat="35.1085613" lon="33.9365975"/>
-  <node id="3893720720" lat="38.7226023" lon="37.2692072"/>
-  <node id="3893720721" lat="38.7225938" lon="37.2694365"/>
-  <node id="3893720722" lat="38.7223638" lon="37.2694256"/>
-  <node id="3893720723" lat="38.7223837" lon="37.2692072"/>
-  <node id="3894685612" lat="37.1955119" lon="33.0283463"/>
-  <node id="3894685613" lat="37.1953229" lon="33.0284049"/>
-  <node id="3894685614" lat="37.1954088" lon="33.0286821"/>
-  <node id="3894685615" lat="37.1955511" lon="33.0286205"/>
-  <way id="313651604">
-    <nd ref="3196594477"/>
-    <nd ref="3196594478"/>
-    <nd ref="3196594479"/>
-    <nd ref="3196594480"/>
-    <nd ref="3196594477"/>
-    <tag k="addr:country" v="TR"/>
-    <tag k="amenity" v="place_of_worship"/>
-    <tag k="building" v="yes"/>
-    <tag k="name" v="Ulu Camii"/>
-    <tag k="religion" v="muslim"/>
-  </way>
-
+<osm version="0.6" generator="CGImap 0.8.1 (8367 thorn-03.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="3196594477" visible="true" version="2" changeset="73652191" timestamp="2019-08-23T07:39:35Z" user="BenWo" uid="10231039" lat="37.9438922" lon="30.3028347"/>
+ <node id="3196594478" visible="true" version="2" changeset="73652191" timestamp="2019-08-23T07:39:35Z" user="BenWo" uid="10231039" lat="37.9437476" lon="30.3029175"/>
+ <node id="3196594479" visible="true" version="2" changeset="73652191" timestamp="2019-08-23T07:39:35Z" user="BenWo" uid="10231039" lat="37.9438089" lon="30.3030899"/>
+ <node id="3196594480" visible="true" version="2" changeset="73652191" timestamp="2019-08-23T07:39:35Z" user="BenWo" uid="10231039" lat="37.9439535" lon="30.3030071"/>
+ <way id="313651604" visible="true" version="2" changeset="37947345" timestamp="2016-03-19T22:57:24Z" user="hakan" uid="4388">
+  <nd ref="3196594477"/>
+  <nd ref="3196594478"/>
+  <nd ref="3196594479"/>
+  <nd ref="3196594480"/>
+  <nd ref="3196594477"/>
+  <tag k="addr:country" v="TR"/>
+  <tag k="amenity" v="place_of_worship"/>
+  <tag k="building" v="yes"/>
+  <tag k="name" v="Ulu Camii"/>
+  <tag k="religion" v="muslim"/>
+ </way>
 </osm>
