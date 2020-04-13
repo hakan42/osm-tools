@@ -10,6 +10,10 @@
     <logger name="org.springframework" level="error" />
     <logger name="org.springframework.aop.interceptor" level="trace" />
 
+    <logger name="org.hibernate.tool.hbm2ddl" level="debug"/>
+    <logger name="org.hibernate.SQL" level="debug"/>
+    <logger name="org.hibernate.type" level="info"/>
+
     <root level="info">
         <appender-ref ref="console" />
     </root>
