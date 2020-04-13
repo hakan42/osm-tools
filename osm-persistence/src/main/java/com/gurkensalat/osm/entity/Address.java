@@ -4,7 +4,6 @@ package com.gurkensalat.osm.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
@@ -14,7 +13,6 @@ import javax.persistence.Embeddable;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
 public class Address
 {
     @Column(name = "ADDR_STREET", length = 80)
