@@ -3,11 +3,15 @@ package com.gurkensalat.osm.entity;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @JacksonXmlRootElement(localName = "osm")
+@Getter
+@Setter
 public class OsmRoot
 {
     private OsmBounds bounds;
@@ -28,49 +32,13 @@ public class OsmRoot
         return bounds;
     }
 
-    public void setBounds(OsmBounds bounds)
-    {
-        this.bounds = bounds;
-    }
-
-    public boolean isGone()
-    {
-        return gone;
-    }
-
-    public void setGone(boolean gone)
-    {
-        this.gone = gone;
-    }
-
     public void addNode(OsmNode node)
     {
         this.nodes.add(node);
-    }
-
-    public List<OsmNode> getNodes()
-    {
-        return nodes;
-    }
-
-    public void setNodes(List<OsmNode> nodes)
-    {
-        this.nodes = nodes;
-    }
-
-    public List<OsmWay> getWays()
-    {
-        return ways;
-    }
-
-    public void setWays(List<OsmWay> ways)
-    {
-        this.ways = ways;
     }
 
     public void addWay(OsmWay way)
     {
         this.ways.add(way);
     }
-
 }

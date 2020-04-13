@@ -1,7 +1,11 @@
 package com.gurkensalat.osm.entity;
 
 import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class OsmBounds
 {
     @JacksonXmlProperty(localName = "minlon")
@@ -15,44 +19,4 @@ public class OsmBounds
 
     @JacksonXmlProperty(localName = "maxlat")
     double maxlat;
-
-    public double getMinlon()
-    {
-        return minlon;
-    }
-
-    public void setMinlon(double minlon)
-    {
-        this.minlon = minlon;
-    }
-
-    public double getMinlat()
-    {
-        return minlat;
-    }
-
-    public void setMinlat(double minlat)
-    {
-        this.minlat = minlat;
-    }
-
-    public double getMaxlon()
-    {
-        return maxlon;
-    }
-
-    public void setMaxlon(double maxlon)
-    {
-        this.maxlon = maxlon;
-    }
-
-    public double getMaxlat()
-    {
-        return maxlat;
-    }
-
-    public void setMaxlat(double maxlat)
-    {
-        this.maxlat = maxlat;
-    }
 }
