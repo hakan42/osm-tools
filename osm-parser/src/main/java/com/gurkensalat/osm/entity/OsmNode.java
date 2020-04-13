@@ -1,18 +1,24 @@
 package com.gurkensalat.osm.entity;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class OsmNode
 {
+    @JacksonXmlProperty(localName = "id")
     private long id;
 
+    @JacksonXmlProperty(localName = "lat")
     private double lat;
 
+    @JacksonXmlProperty(localName = "lon")
     private double lon;
 
+    @JacksonXmlProperty(localName = "tag")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<OsmNodeTag> tags = new ArrayList<OsmNodeTag>();
 
     public void addTag(OsmNodeTag tag)
@@ -35,25 +41,24 @@ public class OsmNode
         return id;
     }
 
-    @XmlElement(name = "tag")
     public List<OsmNodeTag> getTags()
     {
         return tags;
     }
 
-    @XmlAttribute(name = "lat")
+    // @JacksonXmlProperty(localName = "lat")
     public void setLat(double lat)
     {
         this.lat = lat;
     }
 
-    @XmlAttribute(name = "lon")
+    // @JacksonXmlProperty(localName = "lon")
     public void setLon(double lon)
     {
         this.lon = lon;
     }
 
-    @XmlAttribute(name = "id")
+    // @JacksonXmlProperty(localName = "id")
     public void setId(long id)
     {
         this.id = id;

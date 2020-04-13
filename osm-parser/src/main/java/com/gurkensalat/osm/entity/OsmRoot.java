@@ -1,22 +1,28 @@
 package com.gurkensalat.osm.entity;
 
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlRootElement;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@XmlRootElement(name = "osm")
+@JacksonXmlRootElement(localName = "osm")
 public class OsmRoot
 {
     private OsmBounds bounds;
 
     private boolean gone;
 
+    @JacksonXmlProperty(localName = "node")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<OsmNode> nodes = new ArrayList<OsmNode>();
 
+    @JacksonXmlProperty(localName = "way")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<OsmWay> ways = new ArrayList<OsmWay>();
 
-    @XmlElement(name = "bounds")
+    @JacksonXmlProperty(localName = "bounds")
     public OsmBounds getBounds()
     {
         return bounds;
@@ -42,7 +48,6 @@ public class OsmRoot
         this.nodes.add(node);
     }
 
-    @XmlElement(name = "node")
     public List<OsmNode> getNodes()
     {
         return nodes;
@@ -53,7 +58,6 @@ public class OsmRoot
         this.nodes = nodes;
     }
 
-    @XmlElement(name = "way")
     public List<OsmWay> getWays()
     {
         return ways;

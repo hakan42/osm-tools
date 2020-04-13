@@ -1,22 +1,30 @@
 package com.gurkensalat.osm.entity;
 
-import javax.xml.bind.annotation.XmlAttribute;
-import javax.xml.bind.annotation.XmlElement;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlElementWrapper;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class OsmWay
 {
+    @JacksonXmlProperty(localName = "id")
     private long id;
 
+    @JacksonXmlProperty(localName = "lat")
     private double lat;
 
+    @JacksonXmlProperty(localName = "lon")
     private double lon;
 
     private boolean centroidValid;
 
+    @JacksonXmlProperty(localName = "nd")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<OsmWayNodeReference> nd = new ArrayList<OsmWayNodeReference>();
 
+    @JacksonXmlProperty(localName = "tag")
+    @JacksonXmlElementWrapper(useWrapping = false)
     private List<OsmWayTag> tags = new ArrayList<OsmWayTag>();
 
     public boolean isCentroidValid()
@@ -39,7 +47,6 @@ public class OsmWay
         return lat;
     }
 
-    @XmlAttribute(name = "lat")
     public void setLat(double lat)
     {
         this.lat = lat;
@@ -50,7 +57,6 @@ public class OsmWay
         return lon;
     }
 
-    @XmlAttribute(name = "lon")
     public void setLon(double lon)
     {
         this.lon = lon;
@@ -61,13 +67,11 @@ public class OsmWay
         return id;
     }
 
-    @XmlAttribute(name = "id")
     public void setId(long id)
     {
         this.id = id;
     }
 
-    @XmlElement(name = "nd")
     public List<OsmWayNodeReference> getNd()
     {
         return nd;
@@ -78,7 +82,6 @@ public class OsmWay
         this.nd = nd;
     }
 
-    @XmlElement(name = "tag")
     public List<OsmWayTag> getTags()
     {
         return tags;

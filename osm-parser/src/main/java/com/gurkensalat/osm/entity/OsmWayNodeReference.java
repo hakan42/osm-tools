@@ -1,6 +1,6 @@
 package com.gurkensalat.osm.entity;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public class OsmWayNodeReference
 {
@@ -8,7 +8,7 @@ public class OsmWayNodeReference
 
     private OsmNode node;
 
-    @XmlAttribute(name = "ref")
+    @JacksonXmlProperty(localName = "ref")
     public String getRef()
     {
         return ref;

@@ -251,6 +251,12 @@
             </dependency>
 
             <dependency>
+                <groupId>com.fasterxml.jackson.dataformat</groupId>
+                <artifactId>jackson-dataformat-xml</artifactId>
+                <version>${jackson.version}</version>
+            </dependency>
+
+            <dependency>
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <scope>provided</scope>
@@ -277,12 +283,6 @@
             </dependency>
 
             <!-- Various other toolkits -->
-            <dependency>
-                <groupId>org.apache.commons</groupId>
-                <artifactId>commons-digester3</artifactId>
-                <version>3.2</version>
-            </dependency>
-
             <dependency>
                 <groupId>net.sf.opencsv</groupId>
                 <artifactId>opencsv</artifactId>

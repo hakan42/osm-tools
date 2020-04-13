@@ -1,19 +1,22 @@
 package com.gurkensalat.osm.entity;
 
-import javax.xml.bind.annotation.XmlAttribute;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.dataformat.xml.annotation.JacksonXmlProperty;
 
 public class OsmNodeTag
 {
+    @JacksonXmlProperty(localName = "k")
     private String key;
 
+    @JacksonXmlProperty(localName = "v")
     private String value;
 
-    @XmlAttribute(name = "k")
     public String getKey()
     {
         return key;
     }
 
+    @JsonIgnore
     public void setKey(String key)
     {
         this.key = key;
@@ -24,12 +27,12 @@ public class OsmNodeTag
         this.key = key;
     }
 
-    @XmlAttribute(name = "v")
     public String getValue()
     {
         return value;
     }
 
+    @JsonIgnore
     public void setValue(String value)
     {
         this.value = value;

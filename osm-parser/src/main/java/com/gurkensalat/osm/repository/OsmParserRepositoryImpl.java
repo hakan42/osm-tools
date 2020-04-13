@@ -1,28 +1,30 @@
 package com.gurkensalat.osm.repository;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import com.gurkensalat.osm.entity.OsmBounds;
 import com.gurkensalat.osm.entity.OsmNode;
-import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
 import com.gurkensalat.osm.entity.OsmWay;
 import com.gurkensalat.osm.entity.OsmWayNodeReference;
-import com.gurkensalat.osm.entity.OsmWayTag;
-import org.apache.commons.digester3.Digester;
+import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
-import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.StringWriter;
 import java.net.URI;
 import java.util.Map;
 import java.util.TreeMap;
@@ -37,6 +39,8 @@ import static org.apache.commons.io.IOUtils.closeQuietly;
 public class OsmParserRepositoryImpl implements OsmParserRepository
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(OsmParserRepositoryImpl.class);
+
+    private final static String API_PROTOCOL = "https";
 
     private final static String API_HOST = "api.openstreetmap.org";
 
@@ -81,15 +85,16 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            Digester digester = createOsmPlanetDigester();
+            ObjectMapper mapper = new XmlMapper();
+            mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-            root = digester.parse(inputStream);
+            StringWriter writer = new StringWriter();
+            IOUtils.copy(inputStream, writer);
+            String rawData = writer.toString();
+
+            root = mapper.readValue(rawData, OsmRoot.class);
         }
         catch (IOException e)
-        {
-            LOGGER.error("While parsing OSM XML", e);
-        }
-        catch (SAXException e)
         {
             LOGGER.error("While parsing OSM XML", e);
         }
@@ -104,14 +109,22 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("https://" + API_HOST + API_NODE_PATH + "/" + Long.toString(osmId));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_PROTOCOL + "://" + API_HOST + API_NODE_PATH + "/" + osmId);
 
             URI uri = builder.build().toUri();
 
             LOGGER.debug("Loading from {}", uri.toString());
 
             RestTemplate restTemplate = new RestTemplate();
-            root = restTemplate.getForObject(uri, OsmRoot.class);
+            ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
+
+            if (entity.getStatusCode() == HttpStatus.OK)
+            {
+                String rawData = entity.getBody();
+                ObjectMapper mapper = new XmlMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                root = mapper.readValue(rawData, OsmRoot.class);
+            }
         }
         catch (HttpClientErrorException hcee)
         {
@@ -136,14 +149,22 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl("http://" + API_HOST + API_WAY_PATH + "/" + Long.toString(osmId));
+            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_PROTOCOL + "://" + API_HOST + API_WAY_PATH + "/" + osmId);
 
             URI uri = builder.build().toUri();
 
             LOGGER.debug("Loading from {}", uri.toString());
 
             RestTemplate restTemplate = new RestTemplate();
-            root = restTemplate.getForObject(uri, OsmRoot.class);
+            ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
+
+            if (entity.getStatusCode() == HttpStatus.OK)
+            {
+                String rawData = entity.getBody();
+                ObjectMapper mapper = new XmlMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+                root = mapper.readValue(rawData, OsmRoot.class);
+            }
         }
         catch (HttpClientErrorException hcee)
         {
@@ -260,6 +281,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         }
     }
 
+    /*
     private static Digester createOsmPlanetDigester()
     {
         Digester digester = new Digester();
@@ -298,4 +320,6 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
         return digester;
     }
+
+     */
 }
