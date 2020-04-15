@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -14,6 +13,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+import java.time.LocalDateTime;
 
 @MappedSuperclass
 @Getter
@@ -29,14 +29,12 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     private boolean valid;
 
     @Column(name = "CREATION_TIME", nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @CreatedDate
-    private DateTime creationTime;
+    private LocalDateTime creationTime;
 
     @Column(name = "MODIFICATION_TIME", nullable = false)
-    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @LastModifiedDate
-    private DateTime modificationTime;
+    private LocalDateTime modificationTime;
 
     @Column(name = "TYPE", length = 2)
     @Enumerated(EnumType.STRING)
@@ -197,7 +195,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     public void setValid(boolean valid)
     {
         this.valid = valid;
-        this.setModificationTime(DateTime.now());
+        this.setModificationTime(LocalDateTime.now());
     }
 
     public String toString()

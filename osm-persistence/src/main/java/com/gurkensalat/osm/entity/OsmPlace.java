@@ -3,10 +3,10 @@ package com.gurkensalat.osm.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.joda.time.DateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "OSM_PLACES")
@@ -23,12 +23,12 @@ public class OsmPlace extends OsmPlaceBase
 
         if (getCreationTime() == null)
         {
-            setCreationTime(DateTime.now());
+            setCreationTime(LocalDateTime.now());
         }
 
         if (getModificationTime() == null)
         {
-            setModificationTime(DateTime.now());
+            setModificationTime(LocalDateTime.now());
         }
     }
 
