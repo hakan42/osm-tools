@@ -481,6 +481,12 @@
                                 <goal>tree</goal>
                             </goals>
                         </execution>
+                        <execution>
+                            <id>analyze-only</id>
+                            <goals>
+                                <goal>analyze-only</goal>
+                            </goals>
+                        </execution>
                     </executions>
                 </plugin>
 
