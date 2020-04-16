@@ -51,7 +51,7 @@
         <spring.version>5.1.9.RELEASE</spring.version>
         <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
         <spring-data.version>2.1.8.RELEASE</spring-data.version>
-        <spring-data-rest-core.version>2.0.0.RELEASE</spring-data-rest-core.version>
+        <spring-data-rest-core.version>2.5.1.RELEASE</spring-data-rest-core.version>
         <spring-data-rest.version>3.1.1.0.RELEASE</spring-data-rest.version>
 
         <commons-io.version>2.4</commons-io.version>
@@ -233,6 +233,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-rest</artifactId>
                 <version>${spring-boot.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>${jackson.version}</version>
             </dependency>
 
             <dependency>
