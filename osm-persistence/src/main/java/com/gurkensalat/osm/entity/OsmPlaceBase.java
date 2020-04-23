@@ -35,7 +35,7 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     @LastModifiedDate
     private LocalDateTime modificationTime;
 
-    @Column(name = "TYPE", length = 2)
+    @Column(name = "TYPE", length = 8)
     @Enumerated(EnumType.STRING)
     private OsmEntityType type;
 
