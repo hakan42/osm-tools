@@ -1,8 +1,6 @@
 package com.gurkensalat.osm.entity;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.AbstractPersistable;
@@ -15,8 +13,7 @@ import javax.persistence.Version;
 import java.time.LocalDateTime;
 
 @MappedSuperclass
-@Getter
-@Setter
+@Data
 // @NoArgsConstructor
 public abstract class OsmPlaceBase extends AbstractPersistable<Long>
 {
@@ -195,17 +192,5 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
     {
         this.valid = valid;
         this.setModificationTime(LocalDateTime.now());
-    }
-
-    public String toString()
-    {
-        return (new ToStringBuilder(this))
-                .append("lat", lat)
-                .append("lon", lon)
-                .append("name", name)
-                .append("placeType", placeType)
-                .append("address", address)
-                .append("contact", contact)
-                .toString();
     }
 }

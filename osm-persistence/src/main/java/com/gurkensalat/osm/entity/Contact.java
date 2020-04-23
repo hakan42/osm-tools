@@ -1,16 +1,13 @@
 package com.gurkensalat.osm.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class Contact
 {
@@ -32,15 +29,5 @@ public class Contact
         other.setFax(getFax());
         other.setWebsite(getWebsite());
         other.setEmail(getEmail());
-    }
-
-    public String toString()
-    {
-        return (new ToStringBuilder(this))
-                .append("phone", phone)
-                .append("fax", fax)
-                .append("website", website)
-                .append("email", email)
-                .toString();
     }
 }

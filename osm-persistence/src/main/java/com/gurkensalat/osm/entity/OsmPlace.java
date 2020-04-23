@@ -1,17 +1,15 @@
 package com.gurkensalat.osm.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDateTime;
 
 @Entity
+@Data
 @Table(name = "OSM_PLACES")
-@Getter
-@Setter
 @NoArgsConstructor
 public class OsmPlace extends OsmPlaceBase
 {

@@ -1,9 +1,7 @@
 package com.gurkensalat.osm.entity;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.springframework.data.jpa.domain.AbstractPersistable;
 
 import javax.persistence.Column;
@@ -13,8 +11,7 @@ import javax.persistence.Version;
 
 @Entity
 @Table(name = "OSM_TAGS")
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class OsmTag extends AbstractPersistable<Long>
 {
@@ -39,16 +36,5 @@ public class OsmTag extends AbstractPersistable<Long>
 
     public void copyTo(OsmTag other)
     {
-    }
-
-    public String toString()
-    {
-        return (new ToStringBuilder(this))
-                .append("valid", valid)
-                .append("pTable", parentTable)
-                .append("pId", parentId)
-                .append("key", key)
-                .append("value", value)
-                .toString();
     }
 }

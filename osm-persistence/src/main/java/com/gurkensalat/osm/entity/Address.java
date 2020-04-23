@@ -1,17 +1,14 @@
 package com.gurkensalat.osm.entity;
 
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
 
 @Embeddable
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 public class Address
 {
@@ -41,17 +38,5 @@ public class Address
         other.setCity(getCity());
         other.setState(getState());
         other.setCountry(getCountry());
-    }
-
-    public String toString()
-    {
-        return (new ToStringBuilder(this))
-                .append("street", street)
-                .append("housenumber", housenumber)
-                .append("postcode", postcode)
-                .append("city", city)
-                .append("state", state)
-                .append("country", country)
-                .toString();
     }
 }
