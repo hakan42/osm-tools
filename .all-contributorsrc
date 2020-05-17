@@ -20,13 +20,14 @@
       "avatar_url": "https://avatars1.githubusercontent.com/u/27347476?v=4",
       "profile": "https://dependabot.com",
       "contributions": [
-        "maintenance"
+        "maintenance",
+        "security"
       ]
     }
   ],
   "contributorsPerLine": 7,
-  "projectName": "osm-mosques",
-  "projectOwner": "osmmosques",
+  "projectName": "osm-tools",
+  "projectOwner": "hakan42",
   "repoType": "github",
   "repoHost": "https://github.com",
   "skipCi": true
