@@ -10,7 +10,7 @@
 
     <inceptionYear>2014</inceptionYear>
     <url>http://hakan42.github.com/osm-tools/</url>
-    <description></description>
+    <description/>
 
     <modules>
         <module>osm-parser</module>
@@ -77,7 +77,7 @@
 
         <!-- Logging -->
         <slf4j.version>1.7.30</slf4j.version>
-        <logback.version>1.1.2</logback.version>
+        <logback.version>1.2.0</logback.version>
 
         <!-- Testing -->
         <junit.version>4.12</junit.version>
