@@ -63,7 +63,7 @@
         <hibernate.version>5.0.7.Final</hibernate.version>
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <commons-dbcp.version>1.4</commons-dbcp.version>
-        <javassist.version>3.18.2-GA</javassist.version>
+        <javassist.version>3.27.0-GA</javassist.version>
 
         <!-- <flyway.version>6.0.4</flyway.version> -->
 
