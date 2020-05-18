@@ -54,7 +54,7 @@
         <spring-data-rest.version>3.2.3.RELEASE</spring-data-rest.version>
 
         <commons-io.version>2.4</commons-io.version>
-        <commons-lang.version>3.3.2</commons-lang.version>
+        <commons-lang.version>3.10</commons-lang.version>
 
         <jackson.version>2.10.3</jackson.version>
 
