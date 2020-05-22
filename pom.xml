@@ -48,9 +48,9 @@
         <nexus-staging-maven-plugin.version>1.6.6</nexus-staging-maven-plugin.version>
 
         <!-- Spring / Spring Boot versions -->
-        <spring.version>5.2.5.RELEASE</spring.version>
-        <spring-boot.version>2.2.2.RELEASE</spring-boot.version>
-        <spring-data.version>2.2.2.RELEASE</spring-data.version>
+        <spring.version>5.2.6.RELEASE</spring.version>
+        <spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+        <spring-data.version>2.3.0.RELEASE</spring-data.version>
         <spring-data-rest.version>3.2.3.RELEASE</spring-data-rest.version>
 
         <commons-io.version>2.4</commons-io.version>
