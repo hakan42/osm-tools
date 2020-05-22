@@ -36,5 +36,6 @@ public class OsmTag extends AbstractPersistable<Long>
 
     public void copyTo(OsmTag other)
     {
+        // This method exists only to satisfy our object cloning API
     }
 }
