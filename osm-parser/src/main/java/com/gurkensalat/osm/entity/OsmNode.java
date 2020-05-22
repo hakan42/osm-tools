@@ -23,7 +23,7 @@ public class OsmNode
 
     @JacksonXmlProperty(localName = "tag")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<OsmNodeTag> tags = new ArrayList<OsmNodeTag>();
+    private List<OsmNodeTag> tags = new ArrayList<>();
 
     public void addTag(OsmNodeTag tag)
     {

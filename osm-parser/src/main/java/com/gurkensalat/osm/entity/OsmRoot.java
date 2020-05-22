@@ -20,11 +20,11 @@ public class OsmRoot
 
     @JacksonXmlProperty(localName = "node")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<OsmNode> nodes = new ArrayList<OsmNode>();
+    private List<OsmNode> nodes = new ArrayList<>();
 
     @JacksonXmlProperty(localName = "way")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<OsmWay> ways = new ArrayList<OsmWay>();
+    private List<OsmWay> ways = new ArrayList<>();
 
     @JacksonXmlProperty(localName = "bounds")
     public OsmBounds getBounds()

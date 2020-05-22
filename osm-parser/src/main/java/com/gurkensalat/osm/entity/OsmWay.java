@@ -25,11 +25,11 @@ public class OsmWay
 
     @JacksonXmlProperty(localName = "nd")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<OsmWayNodeReference> nd = new ArrayList<OsmWayNodeReference>();
+    private List<OsmWayNodeReference> nd = new ArrayList<>();
 
     @JacksonXmlProperty(localName = "tag")
     @JacksonXmlElementWrapper(useWrapping = false)
-    private List<OsmWayTag> tags = new ArrayList<OsmWayTag>();
+    private List<OsmWayTag> tags = new ArrayList<>();
 
     public void addTag(OsmWayTag tag)
     {
