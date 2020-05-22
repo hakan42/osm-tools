@@ -263,46 +263,4 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             }
         }
     }
-
-    /*
-    private static Digester createOsmPlanetDigester()
-    {
-        Digester digester = new Digester();
-
-        digester.addObjectCreate("osm", OsmRoot.class);
-
-        String path_osm_bounds = "osm/bounds";
-        digester.addObjectCreate(path_osm_bounds, OsmBounds.class);
-        digester.addSetProperties(path_osm_bounds);
-        digester.addSetNext(path_osm_bounds, "setBounds");
-
-        String path_osm_node = "osm/node";
-        digester.addObjectCreate(path_osm_node, OsmNode.class);
-        digester.addSetProperties(path_osm_node);
-        digester.addSetNext(path_osm_node, "addNode");
-
-        String path_osm_node_tag = "osm/node/tag";
-        digester.addObjectCreate(path_osm_node_tag, OsmNodeTag.class);
-        digester.addSetProperties(path_osm_node_tag);
-        digester.addSetNext(path_osm_node_tag, "addTag");
-
-        String path_osm_way = "osm/way";
-        digester.addObjectCreate(path_osm_way, OsmWay.class);
-        digester.addSetProperties(path_osm_way);
-        digester.addSetNext(path_osm_way, "addWay");
-
-        String path_osm_way_tag = "osm/way/tag";
-        digester.addObjectCreate(path_osm_way_tag, OsmWayTag.class);
-        digester.addSetProperties(path_osm_way_tag);
-        digester.addSetNext(path_osm_way_tag, "addTag");
-
-        String path_osm_way_node_ref = "osm/way/nd";
-        digester.addObjectCreate(path_osm_way_node_ref, OsmWayNodeReference.class);
-        digester.addSetProperties(path_osm_way_node_ref);
-        digester.addSetNext(path_osm_way_node_ref, "addNodeReference");
-
-        return digester;
-    }
-
-     */
 }
