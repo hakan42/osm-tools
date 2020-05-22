@@ -10,7 +10,6 @@ import com.gurkensalat.osm.entity.OsmWay;
 import com.gurkensalat.osm.entity.OsmWayNodeReference;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
-import org.apache.commons.lang3.CharEncoding;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -22,7 +21,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.StringWriter;
 import java.net.URI;
 import java.util.Map;
@@ -32,7 +30,6 @@ import static java.lang.Boolean.FALSE;
 import static java.lang.Boolean.TRUE;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
-import static org.apache.commons.io.IOUtils.closeQuietly;
 
 @Component
 @Slf4j
@@ -50,21 +47,9 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
     {
         OsmRoot root = new OsmRoot();
 
-        try
+        try (FileInputStream fis = new FileInputStream(resourceFile))
         {
-            FileInputStream fis = new FileInputStream(resourceFile);
-            InputStreamReader reader = new InputStreamReader(fis, CharEncoding.UTF_8);
-
-            try
-            {
-                root = parse(fis);
-            }
-            finally
-            {
-                closeQuietly(reader);
-                closeQuietly(fis);
-            }
-
+            root = parse(fis);
             log.info("Parsed Root: {}", root);
         }
         catch (IOException e)
