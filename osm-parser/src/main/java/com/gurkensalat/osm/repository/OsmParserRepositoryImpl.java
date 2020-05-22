@@ -8,10 +8,9 @@ import com.gurkensalat.osm.entity.OsmNode;
 import com.gurkensalat.osm.entity.OsmRoot;
 import com.gurkensalat.osm.entity.OsmWay;
 import com.gurkensalat.osm.entity.OsmWayNodeReference;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.CharEncoding;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
@@ -36,10 +35,9 @@ import static java.lang.Math.min;
 import static org.apache.commons.io.IOUtils.closeQuietly;
 
 @Component
+@Slf4j
 public class OsmParserRepositoryImpl implements OsmParserRepository
 {
-    private static final Logger LOGGER = LoggerFactory.getLogger(OsmParserRepositoryImpl.class);
-
     private final static String API_PROTOCOL = "https";
 
     private final static String API_HOST = "api.openstreetmap.org";
@@ -67,12 +65,12 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
                 closeQuietly(fis);
             }
 
-            LOGGER.info("Parsed Root: {}", root);
+            log.info("Parsed Root: {}", root);
         }
         catch (IOException e)
         {
-            LOGGER.error("While parsing OSM XML", e);
-            LOGGER.info("  were trying to read {}", resourceFile);
+            log.error("While parsing OSM XML", e);
+            log.info("  were trying to read {}", resourceFile);
         }
 
         calculateWayCentroids(root);
@@ -96,7 +94,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         }
         catch (IOException e)
         {
-            LOGGER.error("While parsing OSM XML", e);
+            log.error("While parsing OSM XML", e);
         }
 
         calculateWayCentroids(root);
@@ -113,7 +111,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
             URI uri = builder.build().toUri();
 
-            LOGGER.debug("Loading from {}", uri.toString());
+            log.debug("Loading from {}", uri.toString());
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
@@ -130,13 +128,13 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         {
             if (HttpStatus.GONE == hcee.getStatusCode())
             {
-                LOGGER.info("Object is gone...");
+                log.info("Object is gone...");
                 root.setGone(true);
             }
         }
         catch (Exception e)
         {
-            LOGGER.error("While fetching OSM node from API", e);
+            log.error("While fetching OSM node from API", e);
         }
 
         calculateWayCentroids(root);
@@ -153,7 +151,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
             URI uri = builder.build().toUri();
 
-            LOGGER.debug("Loading from {}", uri.toString());
+            log.debug("Loading from {}", uri.toString());
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
@@ -170,13 +168,13 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         {
             if (HttpStatus.GONE == hcee.getStatusCode())
             {
-                LOGGER.info("Object is gone...");
+                log.info("Object is gone...");
                 root.setGone(true);
             }
         }
         catch (Exception e)
         {
-            LOGGER.error("While fetching OSM node from API", e);
+            log.error("While fetching OSM node from API", e);
         }
 
         calculateWayCentroids(root);
