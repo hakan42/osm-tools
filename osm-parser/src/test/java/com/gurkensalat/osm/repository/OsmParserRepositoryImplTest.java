@@ -5,6 +5,7 @@ import com.gurkensalat.osm.entity.OsmNode;
 import com.gurkensalat.osm.entity.OsmNodeTag;
 import com.gurkensalat.osm.entity.OsmRoot;
 import com.gurkensalat.osm.entity.OsmWay;
+import com.gurkensalat.osm.entity.OsmWayTag;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.MockitoAnnotations;
@@ -53,7 +54,7 @@ public class OsmParserRepositoryImplTest
     }
 
     @Test
-    public void parseMosqueGermeringDataFromAPI() throws IOException
+    public void parseMosqueGermeringDataFromAPICached() throws IOException
     {
         InputStream is = getClass().getClassLoader().getResourceAsStream("904317998.osm");
         assertNotNull(is);
@@ -97,7 +98,7 @@ public class OsmParserRepositoryImplTest
     }
 
     @Test
-    public void loadMosqueGermanyDataFromServer()
+    public void loadOnlineMosqueDataNodeGermeringFromServer()
     {
         OsmRoot root = testable.loadNodeFromServer(904317998);
 
@@ -128,6 +129,47 @@ public class OsmParserRepositoryImplTest
 
         assertEquals(11.38789, bounds.getMaxlon(), 0.001);
         assertEquals(48.13640, bounds.getMaxlat(), 0.001);
+    }
+
+    @Test
+    public void loadOnlineWayMosqueDataEmreguelFromServer()
+    {
+        OsmRoot root = testable.loadWayFromServer(790360319);
+
+        assertNotNull(root);
+
+        assertEquals(1, root.getWays().size());
+
+        OsmWay way = root.getWays().get(0);
+        assertNotEquals(0, way.getId());
+        assertNotEquals(0, way.getLat());
+        assertNotEquals(0, way.getLon());
+
+        List<OsmWayTag> tags = way.getTags();
+        assertNotNull(tags);
+
+        assertNotEquals(0, tags.size());
+        for (OsmWayTag tag : tags)
+        {
+            assertNotNull(tag.getKey());
+            assertNotNull(tag.getValue());
+        }
+
+        OsmBounds bounds = root.getBounds();
+        assertNotNull(bounds);
+
+        // lat 37.751149579999996
+        // lon 30.55327546
+
+        // minlon 30.5531455
+        // minlat 37.7510304
+        assertEquals(30.55315, bounds.getMinlon(), 0.001);
+        assertEquals(37.75103, bounds.getMinlat(), 0.001);
+
+        // maxlon 30.5534677
+        // maxlat 37.7512671
+        assertEquals(30.55347, bounds.getMaxlon(), 0.001);
+        assertEquals(37.75127, bounds.getMaxlat(), 0.001);
     }
 
     @Test
