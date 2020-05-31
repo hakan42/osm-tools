@@ -140,7 +140,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             UriComponents components = UriComponentsBuilder.newInstance()
                 .scheme(API_PROTOCOL)
                 .host(API_HOST)
-                .pathSegment(API_WAY_PATH, Long.toString(osmId))
+                .pathSegment(API_WAY_PATH, Long.toString(osmId), "full")
                 .build();
 
             URI uri = components.toUri();
