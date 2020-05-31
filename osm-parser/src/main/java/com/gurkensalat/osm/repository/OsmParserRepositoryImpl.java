@@ -15,6 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.io.File;
@@ -39,9 +40,9 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
 
     private final static String API_HOST = "api.openstreetmap.org";
 
-    private final static String API_NODE_PATH = "/api/0.6/node";
+    private final static String API_NODE_PATH = "api/0.6/node";
 
-    private final static String API_WAY_PATH = "/api/0.6/way";
+    private final static String API_WAY_PATH = "api/0.6/way";
 
     public OsmRoot parse(File resourceFile)
     {
@@ -92,11 +93,15 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_PROTOCOL + "://" + API_HOST + API_NODE_PATH + "/" + osmId);
+            UriComponents components = UriComponentsBuilder.newInstance()
+                .scheme(API_PROTOCOL)
+                .host(API_HOST)
+                .pathSegment(API_NODE_PATH, Long.toString(osmId))
+                .build();
 
-            URI uri = builder.build().toUri();
+            URI uri = components.toUri();
 
-            log.debug("Loading from {}", uri.toString());
+            log.debug("Loading from {}", uri);
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
@@ -132,11 +137,15 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
         OsmRoot root = new OsmRoot();
         try
         {
-            UriComponentsBuilder builder = UriComponentsBuilder.fromHttpUrl(API_PROTOCOL + "://" + API_HOST + API_WAY_PATH + "/" + osmId);
+            UriComponents components = UriComponentsBuilder.newInstance()
+                .scheme(API_PROTOCOL)
+                .host(API_HOST)
+                .pathSegment(API_WAY_PATH, Long.toString(osmId))
+                .build();
 
-            URI uri = builder.build().toUri();
+            URI uri = components.toUri();
 
-            log.debug("Loading from {}", uri.toString());
+            log.debug("Loading from {}", uri);
 
             RestTemplate restTemplate = new RestTemplate();
             ResponseEntity<String> entity = restTemplate.getForEntity(uri, String.class);
