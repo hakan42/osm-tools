@@ -213,7 +213,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
     /* package level protection for unit testing */
     void calculateWayCentroids(OsmRoot root)
     {
-        Map<String, OsmNode> nodeMap = new TreeMap<String, OsmNode>();
+        Map<String, OsmNode> nodeMap = new TreeMap<>();
 
         if (root.getNodes() != null)
         {
