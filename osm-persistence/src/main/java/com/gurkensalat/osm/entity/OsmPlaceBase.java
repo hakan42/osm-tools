@@ -65,8 +65,9 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
         this.setContact(new Contact());
     }
 
-    public OsmPlaceBase(String name, PlaceType type)
+    public OsmPlaceBase(String name, PlaceType placeType)
     {
+        this.setPlaceType(placeType);
         this.setName(name);
         this.setAddress(new Address());
         this.setContact(new Contact());
