@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringWriter;
 import java.net.URI;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -73,7 +74,7 @@ public class OsmParserRepositoryImpl implements OsmParserRepository
             mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
             StringWriter writer = new StringWriter();
-            IOUtils.copy(inputStream, writer);
+            IOUtils.copy(inputStream, writer, StandardCharsets.UTF_8);
             String rawData = writer.toString();
 
             root = mapper.readValue(rawData, OsmRoot.class);
