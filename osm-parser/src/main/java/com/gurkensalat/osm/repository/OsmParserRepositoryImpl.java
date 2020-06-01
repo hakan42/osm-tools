@@ -37,13 +37,13 @@ import static java.lang.Math.min;
 @Slf4j
 public class OsmParserRepositoryImpl implements OsmParserRepository
 {
-    private final static String API_PROTOCOL = "https";
+    private static final String API_PROTOCOL = "https";
 
-    private final static String API_HOST = "api.openstreetmap.org";
+    private static final String API_HOST = "api.openstreetmap.org";
 
-    private final static String API_NODE_PATH = "api/0.6/node";
+    private static final String API_NODE_PATH = "api/0.6/node";
 
-    private final static String API_WAY_PATH = "api/0.6/way";
+    private static final String API_WAY_PATH = "api/0.6/way";
 
     public OsmRoot parse(File resourceFile)
     {
