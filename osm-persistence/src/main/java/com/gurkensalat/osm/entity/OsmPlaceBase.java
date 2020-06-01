@@ -82,10 +82,10 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
 
         for (OsmNodeTag tag : node.getTags())
         {
-            String key = tag.getKey().toLowerCase();
+            String tagKey = tag.getKey().toLowerCase();
             String val = tag.getValue();
 
-            useTag(key, val);
+            useTag(tagKey, val);
         }
     }
 
@@ -98,10 +98,10 @@ public abstract class OsmPlaceBase extends AbstractPersistable<Long>
 
         for (OsmNodeTag tag : way.getTags())
         {
-            String key = tag.getKey().toLowerCase();
+            String tagKey = tag.getKey().toLowerCase();
             String val = tag.getValue();
 
-            useTag(key, val);
+            useTag(tagKey, val);
         }
     }
 
