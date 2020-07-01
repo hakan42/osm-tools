@@ -68,7 +68,7 @@
         <!-- <flyway.version>6.0.4</flyway.version> -->
 
         <h2-database.version>1.4.191</h2-database.version>
-        <mysqldb.version>5.1.32</mysqldb.version>
+        <mysqldb.version>8.0.16</mysqldb.version>
 
         <!-- Sundry other libraries -->
         <lombok.version>1.18.12</lombok.version>
